@@ -70,7 +70,7 @@
   ;; lsp-ui-doc
   (lsp-ui-doc-enable t)
   
-  (lsp-ui-doc-use-webkit t) 
+  (lsp-ui-doc-use-webkit nil) 
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
 ;;  (lsp-ui-doc-border (face-foreground 'default))
@@ -367,5 +367,9 @@
   (setq lsp-julia-default-environment "~/.julia/environments/v1.5")
   (add-hook 'julia-mode-hook #'lsp)
   )
+
+(add-to-list 'load-path "~/.emacs.d/lisp/julia-repl.el")
+(require 'julia-repl)
+(add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
 
 (provide 'lsp-config)

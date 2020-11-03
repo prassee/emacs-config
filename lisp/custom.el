@@ -72,7 +72,7 @@
 
 (set-face-attribute 'default nil
                     :family "PragmataPro Liga"
-                    :height 164
+                    :height 182
                     :weight 'normal
                     :width 'normal)
 
