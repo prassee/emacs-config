@@ -19,8 +19,8 @@
 (global-set-key (kbd "C-c t") 'toggle-window-split)
 (global-set-key (kbd "C-c T") 'window-toggle-split-direction)
 
-(global-set-key (kbd "C-c l") 'lsp-format-buffer)
-(global-set-key (kbd "s-l fe") 'lsp-ui-flycheck-list)
+;; (global-set-key (kbd "C-c l f") 'lsp-format-buffer)
+;; (global-set-key (kbd "C-c l f e") 'lsp-ui-flycheck-list)
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x a") 'org-capture)

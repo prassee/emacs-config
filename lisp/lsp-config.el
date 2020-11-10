@@ -11,6 +11,12 @@
   (flycheck-set-indication-mode 'left-fringe)
   )
 
+;; (use-package
+;;   which-key
+;;   :init
+;;   (which-key-mode)
+;;   )
+
 (defun python-lsp-setup ()
   "Microsoft Python Language Server does not have a syntax checker, setup one for it."
   (progn
@@ -22,7 +28,7 @@
              (progn
                (pyvenv-activate venv-path)
                (lsp-deferred)
-               (define-key python-mode-map (kbd "C-c l") 'python-black-buffer)
+               (define-key python-mode-map (kbd "C-c l b") 'python-black-buffer)
                (flycheck-add-next-checker 'lsp 'python-flake8)
                ;; (setq-local flycheck-python-pycompile-executable "python3"
                ;;       flycheck-python-flake8-executable "python3-flake8"
@@ -36,6 +42,8 @@
 (use-package lsp-mode
   :defer t
   :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-l")
   :custom
   (lsp-auto-guess-root nil)
   (lsp-prefer-flymake nil) ; Use flycheck instead of flymake
@@ -49,10 +57,14 @@
   (lsp-keep-workspace-alive nil) ; Auto-kill LSP server
   (lsp-report-if-no-buffer t)
   (lsp-eldoc-hook nil)
+  (lsp-rust-analyzer-inlay-hints-mode t)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
-  :hook ((python-mode go-mode julia-mode rust-mode
+  :hook (((python-mode go-mode julia-mode rust-mode
                       js-mode js2-mode typescript-mode web-mode)
-         . lsp))
+          . lsp)
+         ;; (lsp-mode . lsp-enable-which-key-integration)
+         )
+  )
 
 
 (use-package
