@@ -59,10 +59,9 @@
   (lsp-eldoc-hook nil)
   (lsp-rust-analyzer-inlay-hints-mode t)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
-  :hook (((python-mode go-mode julia-mode rust-mode
+  :hook ((python-mode go-mode julia-mode rust-mode
                       js-mode js2-mode typescript-mode web-mode)
-          . lsp)
-         ;; (lsp-mode . lsp-enable-which-key-integration)
+          . lsp
          )
   )
 
@@ -338,15 +337,15 @@
           (lambda ()
             (python-lsp-setup)))
 
-
 (use-package 
   rust-mode
-  :hook (rust-mode . lsp) 
+  ;; :hook (rust-mode . lsp)
   :init
   (setq lsp-rust-server 'rust-analyzer)
   ;; (setq lsp-rust-all-features 'all)
   (setq lsp-rust-analyzer-inlay-hints-mode t)
-  (add-hook 'rust-mode-hook #'lsp-mode) 
+  (add-hook 'rust-mode-hook #'lsp-mode)
+  (add-hook 'rust-mode-hook #'lsp-deferred)
   (add-hook 'rust-mode-hook #'yas-minor-mode))
 
 (use-package 
