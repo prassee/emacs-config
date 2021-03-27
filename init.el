@@ -65,12 +65,12 @@
                                     ((control) . nil))
       mouse-wheel-progressive-speed nil
       global-auto-revert-non-file-buffers t
+      warning-minimum-level :emergency
       package-archives '(("gnu" . "http://elpa.gnu.org/packages/") 
                          ("org" . "http://orgmode.org/elpa/") 
                          ("melpa" . "http://melpa.org/packages/") 
                          ("melpa-stable" . "http://stable.melpa.org/packages/"))
       package-archive-priorities '(("melpa" . 1)))
-
 
 
 ;; the package manager
@@ -117,7 +117,6 @@
 (face-list))
 
 (shell-command "truncate -s 0 ~/.emacs.d/temp.el")
-
 
 (setq custom-file (concat user-emacs-directory "temp.el"))
 
