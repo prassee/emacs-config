@@ -165,10 +165,12 @@
 (use-package 
   elisp-format)
 
-(use-package 
-  multiple-cursors 
-  :init (progn 
-          (require 'multiple-cursors)))
+;; (use-package 
+;;   multiple-cursors 
+;;   :init (progn 
+;;           (require 'multiple-cursors)))
+
+(use-package iedit)
 
 (use-package 
   diff-hl 
@@ -184,7 +186,6 @@
   hl-line 
   :ensure nil 
   :hook (after-init . global-hl-line-mode))
-
 
 (use-package 
   highlight-indent-guides 
@@ -278,21 +279,6 @@
 (use-package treemacs-projectile
   :after treemacs projectile
   :ensure t)
-
-;; (use-package treemacs-magit
-;;   :after treemacs magit
-;;   :ensure t)
-
-(use-package ivy-posframe
-  :ensure t
-  :init
-  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-  (setq ivy-posframe-parameters
-      '((left-fringe . 8)
-        (right-fringe . 8)))
-  (setq ivy-posframe-border-width 2)
-  (ivy-posframe-mode 1)
-  )
 
 (use-package modus-vivendi-theme)
 

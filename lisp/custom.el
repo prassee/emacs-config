@@ -61,6 +61,8 @@
   ;; :project/:workspace/:file
   (setq lsp-modeline-diagnostics-scope :workspace)
   (setq lsp-modeline-code-actions-segments '(count icon name))
+  (setq lsp-headerline-breadcrumb-mode nil)
+  (setq lsp-headerline-breadcrumb-enable nil)
   )
 
 ;; (with-eval-after-load 'flycheck

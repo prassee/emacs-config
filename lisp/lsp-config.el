@@ -17,33 +17,34 @@
 ;;   (which-key-mode)
 ;;   )
 
-(defun python-lsp-setup ()
-  "Microsoft Python Language Server does not have a syntax checker, setup one for it."
-  (progn
-    ;;(require 'lsp-python-ms)
-    (f-traverse-upwards
-     (lambda (path)
-       (let ((venv-path (f-expand ".venv" path)))
-         (if (f-exists? venv-path)
-             (progn
-               (pyvenv-activate venv-path)
-               (lsp-deferred)
-               (define-key python-mode-map (kbd "C-c l b") 'python-black-buffer)
-               (flycheck-add-next-checker 'lsp 'python-flake8)
-               ;; (setq-local flycheck-python-pycompile-executable "python3"
-               ;;       flycheck-python-flake8-executable "python3-flake8"
-               ;;       flycheck-python-pylint-executable "python3-pylint"
-               ;;       flycheck-python-mypy-executable "python3-mypy")
-               t)))))
-    (setq-local flycheck-checker 'python-flake8)
-    )
-  )
+;; (defun python-lsp-setup ()
+;;   "Microsoft Python Language Server does not have a syntax checker, setup one for it."
+;;   (progn
+;;     ;;(require 'lsp-python-ms)
+;;     (f-traverse-upwards
+;;      (lambda (path)
+;;        (let ((venv-path (f-expand ".venv" path)))
+;;          (if (f-exists? venv-path)
+;;              (progn
+;;                (pyvenv-activate venv-path)
+;;                (lsp-deferred)
+;;                (define-key python-mode-map (kbd "C-c l b") 'python-black-buffer)
+;;                (flycheck-add-next-checker 'lsp 'python-flake8)
+;;                ;; (setq-local flycheck-python-pycompile-executable "python3"
+;;                ;;       flycheck-python-flake8-executable "python3-flake8"
+;;                ;;       flycheck-python-pylint-executable "python3-pylint"
+;;                ;;       flycheck-python-mypy-executable "python3-mypy")
+;;                t)))))
+;;     (setq-local flycheck-checker 'python-flake8)
+;;     )
+;;   )
 
 (use-package lsp-mode
   :defer t
   :commands (lsp lsp-deferred)
   :init
-  (setq lsp-keymap-prefix "C-l")
+  (setq lsp-keymap-prefix "C-c l")
+  
   :custom
   (lsp-auto-guess-root nil)
   (lsp-prefer-flymake nil) ; Use flycheck instead of flymake
@@ -59,7 +60,9 @@
   (lsp-eldoc-hook nil)
   (lsp-rust-analyzer-inlay-hints-mode t)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
-  :hook ((python-mode go-mode julia-mode rust-mode
+  :config
+  (setq lsp-headerline-breadcrumb-mode nil)
+  :hook ((go-mode julia-mode rust-mode
                       js-mode js2-mode typescript-mode web-mode)
           . lsp
          )
@@ -91,7 +94,6 @@
   (lsp-ui-doc-max-width 65) 
   (lsp-ui-doc-max-height 29) 
   (lsp-ui-doc-use-childframe t)
-  
   ;; lsp-ui-flycheck
   (lsp-ui-flycheck--start t) 
   (lsp-ui-flycheck-enable t) 
@@ -323,19 +325,33 @@
 (use-package 
   yasnippet  )
 
-(use-package python-black
-  :demand t
-  :after python)
+;; (use-package python-black
+;;   :demand t
+;;   :after python)
 
-(use-package
-  pyvenv
-  :init
-  (pyvenv-mode)
-  )
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
 
-(add-hook 'python-mode-hook
-          (lambda ()
-            (python-lsp-setup)))
+;; (use-package lsp-python-ms
+;;   :ensure t
+;;   :init (setq lsp-python-ms-auto-install-server t)
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-python-ms)
+;;                           (lsp))))
+                                        ; or lsp-deferred
+
+;; (use-package
+;;   pyvenv
+;;   :init
+;;   (pyvenv-mode)
+;;   )
+
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (python-lsp-setup)))
 
 (use-package 
   rust-mode
@@ -379,8 +395,10 @@
   (add-hook 'julia-mode-hook #'lsp)
   )
 
-(add-to-list 'load-path "~/.emacs.d/lisp/julia-repl.el")
-(require 'julia-repl)
-(add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
+(use-package jupyter)
+
+;; (add-to-list 'load-path "~/.emacs.d/lisp/julia-repl.el")
+;; (require 'julia-repl)
+;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
 
 (provide 'lsp-config)
