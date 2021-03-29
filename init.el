@@ -8,7 +8,7 @@
 (setq inhibit-compacting-font-caches t)
 ;; (setq warning-minimum-level :emergency)
 (setq auto-revert-check-vc-info t)
-
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (defun remap-faces-default-attributes ()
    (let ((family (face-attribute 'default :family))
          (height (face-attribute 'default :height)))
