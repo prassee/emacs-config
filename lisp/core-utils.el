@@ -21,16 +21,6 @@
   :commands 'er/expand-region 
   :bind ("C-=" . er/expand-region))
 
-(use-package projectile
-  :bind
-  ("M-p" . projectile-command-map)
-  :custom
-  (projectile-completion-system 'ivy)
-  :config
-  (projectile-mode 1)
-
-  (add-to-list 'projectile-globally-ignored-directories "node_modules"))
-
 (use-package magit
   :if (executable-find "git")
   :bind
@@ -44,22 +34,26 @@
   ;;   (magit-log-buffer-file t))
   )
 
-(use-package 
-  ivy 
-  :defer 0.1 
-  :diminish
-  ;; :bind (("C-c C-r" . ivy-resume)
-  ;;        ("C-x B" . ivy-switch-buffer-other-window))
-  :config 
-  (custom-set-faces '(ivy-current-match ((t 
-                                          (:background "black" 
-                                                       :foreground "cyan")))) 
-                    '(ivy-highlight-face ((t 
-                                           (:background "black" 
-                                                        :foreground "green"))))) 
-  :custom (ivy-count-format "(%d/%d) ") 
-  (ivy-use-virtual-buffers nil) 
-  :config (ivy-mode))
+
+
+(use-package ivy
+  :hook (after-init . ivy-mode)
+  :config
+  (setcdr (assoc t ivy-format-functions-alist) #'ivy-format-function-line)
+  (setq ivy-height 15)
+  (setq ivy-display-style nil)
+  (setq ivy-re-builders-alist
+        '((counsel-rg            . ivy--regex-plus)
+          (counsel-projectile-rg . ivy--regex-plus)
+          (swiper                . ivy--regex-plus)
+          (t                     . ivy--regex-fuzzy)))
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-initial-inputs-alist nil)
+  (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
+  (define-key ivy-mode-map       (kbd "<escape>") nil)
+  (define-key ivy-minibuffer-map (kbd "<escape>") #'minibuffer-keyboard-quit))
+
 
 
 (use-package 
@@ -70,8 +64,8 @@
   :config (setq ivy-rich-mode 1) 
   (ivy-set-display-transformer 'ivy-switch-buffer-other-window 'ivy-rich-switch-buffer-transformer))
 
-(use-package
-  smex)
+;; (use-package
+;;   smex)
 
 (use-package 
   counsel 
@@ -95,11 +89,58 @@
    ;;("<f2> r" . ivy-resume) ; Resume last Ivy-based completion
    ))            
 
+(use-package projectile
+  :bind
+  ("M-p" . projectile-command-map)
+  :custom
+  (projectile-completion-system 'ivy)
+  :config
+  (setq projectile-sort-order 'recentf)
+  (setq projectile-indexing-method 'hybrid)
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-mode-line-prefix " ")
+  (projectile-mode +1)
+
+  (add-to-list 'projectile-globally-ignored-directories "node_modules"))
+
+
+(use-package swiper
+  :after ivy
+  :config
+  (setq swiper-action-recenter t)
+  (setq swiper-goto-start-of-match t))
+
+
 (use-package 
-  counsel-projectile 
+  counsel-projectile
+  :config
+  (counsel-projectile-mode +1)
   :bind*                                ; load when pressed
   (("C-x t" . counsel-projectile) 
    ("C-x C-t" . counsel-projectile-find-file)))
+
+(use-package wgrep
+  :commands wgrep-change-to-wgrep-mode
+  :config
+  (setq wgrep-auto-save-buffer t))
+
+(use-package prescient
+  :config
+  (setq prescient-filter-method '(literal regexp initialism fuzzy))
+  (prescient-persist-mode +1))
+
+(use-package ivy-prescient
+  :after (prescient ivy counsel)
+  :config
+  (setq ivy-prescient-sort-commands
+        '(:not swiper
+               counsel-grep
+               counsel-rg
+               counsel-projectile-rg
+               ivy-switch-buffer
+               counsel-switch-buffer))
+  (setq ivy-prescient-retain-classic-highlighting t)
+  (ivy-prescient-mode +1))
 
 
 ;; move lines with ease
@@ -173,9 +214,6 @@
   (global-diff-hl-mode))
 
 (use-package 
-  all-the-icons)
-
-(use-package 
   hl-line 
   :ensure nil 
   :hook (after-init . global-hl-line-mode))
@@ -191,6 +229,17 @@
 
 (use-package 
   transpose-frame)
+
+
+(use-package all-the-icons
+  :config
+  (setq all-the-icons-scale-factor 0.8))
+
+(use-package all-the-icons-dired
+  :config
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode);
+  (setq all-the-icons-dired-monochrome nil))
+
 
 (use-package treemacs
   :ensure t
