@@ -1,3 +1,4 @@
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -8,7 +9,6 @@
 (setq inhibit-compacting-font-caches t)
 ;; (setq warning-minimum-level :emergency)
 (setq auto-revert-check-vc-info t)
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (defun remap-faces-default-attributes ()
    (let ((family (face-attribute 'default :family))
          (height (face-attribute 'default :height)))

@@ -112,11 +112,13 @@
 ;;(zerodark-setup-modeline-format)
 (mood-line-mode)
 
-(setq modus-vivendi-theme-intense-hl-line t
-        modus-vivendi-theme-no-mixed-fonts t
-        modus-vivendi-theme-completions 'opinionated
-        modus-vivendi-theme-fringes 'intense
-        modus-vivendi-theme-intense-paren-match t
-        )
+;; (setq modus-vivendi-theme-intense-hl-line t
+;;         modus-vivendi-theme-no-mixed-fonts t
+;;         modus-vivendi-theme-completions 'opinionated
+;;         modus-vivendi-theme-fringes 'intense
+;;         modus-vivendi-theme-intense-paren-match t
+;;         )
 
-(load-theme 'modus-vivendi t)
+;; (load-theme 'modus-vivendi t)
+
+(load-theme 'vscode-dark-plus t)

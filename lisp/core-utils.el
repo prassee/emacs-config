@@ -163,14 +163,6 @@
                        (:foreground "#bd98fe")))) 
   :mode "\\.md\\'")
 
-(use-package 
-  elisp-format)
-
-;; (use-package 
-;;   multiple-cursors 
-;;   :init (progn 
-;;           (require 'multiple-cursors)))
-
 (use-package iedit)
 
 (use-package 
@@ -281,7 +273,9 @@
   :after treemacs projectile
   :ensure t)
 
-(use-package modus-vivendi-theme)
+;; (use-package modus-vivendi-theme)
+
+(use-package vscode-dark-plus-theme)
 
 (use-package mood-line)
 
