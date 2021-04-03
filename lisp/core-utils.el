@@ -324,6 +324,13 @@
 
 ;; (use-package modus-vivendi-theme)
 
+
+(use-package vscode-dark-plus-theme
+  :ensure t
+  :after solaire-mode
+  :config
+  (load-theme 'vscode-dark-plus t))
+
 (use-package solaire-mode
   :ensure t
   :hook ((change-major-mode . turn-on-solaire-mode)
@@ -334,12 +341,6 @@
   (add-to-list 'solaire-mode-themes-to-face-swap '"vscode-dark-plus")
   (setq solaire-mode-auto-swap-bg t)
   (solaire-global-mode +1))
-
-(use-package vscode-dark-plus-theme
-  :ensure t
-  :after solaire-mode
-  :config
-  (load-theme 'vscode-dark-plus t))
 
 ;; (use-package vscode-dark-plus-theme)
 
