@@ -121,4 +121,4 @@
 
 ;; (load-theme 'modus-vivendi t)
 
-(load-theme 'vscode-dark-plus t)
+;; (load-theme 'vscode-dark-plus t)

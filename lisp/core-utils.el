@@ -21,18 +21,18 @@
   :commands 'er/expand-region 
   :bind ("C-=" . er/expand-region))
 
-(use-package magit
-  :if (executable-find "git")
-  :bind
-  (("C-x g" . magit-status)
-   (:map magit-status-mode-map
-         ("M-RET" . magit-diff-visit-file-other-window)))
-  ;; :config
-  ;; (defun magit-log-follow-current-file ()
-  ;;   "A wrapper around `magit-log-buffer-file' with `--follow' argument."
-  ;;   (interactive)
-  ;;   (magit-log-buffer-file t))
-  )
+;; (use-package magit
+;;   :if (executable-find "git")
+;;   :bind
+;;   (("C-x g" . magit-status)
+;;    (:map magit-status-mode-map
+;;          ("M-RET" . magit-diff-visit-file-other-window)))
+;;   ;; :config
+;;   ;; (defun magit-log-follow-current-file ()
+;;   ;;   "A wrapper around `magit-log-buffer-file' with `--follow' argument."
+;;   ;;   (interactive)
+;;   ;;   (magit-log-buffer-file t))
+;;   )
 
 
 
@@ -324,7 +324,24 @@
 
 ;; (use-package modus-vivendi-theme)
 
-(use-package vscode-dark-plus-theme)
+(use-package solaire-mode
+  :ensure t
+  :hook ((change-major-mode . turn-on-solaire-mode)
+         (after-revert . turn-on-solaire-mode)
+         (ediff-prepare-buffer . solaire-mode)
+         (minibuffer-setup . solaire-mode-in-minibuffer))
+  :config
+  (add-to-list 'solaire-mode-themes-to-face-swap '"vscode-dark-plus")
+  (setq solaire-mode-auto-swap-bg t)
+  (solaire-global-mode +1))
+
+(use-package vscode-dark-plus-theme
+  :ensure t
+  :after solaire-mode
+  :config
+  (load-theme 'vscode-dark-plus t))
+
+;; (use-package vscode-dark-plus-theme)
 
 (use-package mood-line)
 

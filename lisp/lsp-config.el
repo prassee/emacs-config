@@ -139,13 +139,6 @@
                           (require 'lsp-pyright)
                           (lsp))))  ; or lsp-deferred
 
-;; (use-package lsp-python-ms
-;;   :ensure t
-;;   :init (setq lsp-python-ms-auto-install-server t)
-;;   :hook (python-mode . (lambda ()
-;;                           (require 'lsp-python-ms)
-;;                           (lsp))))
-                                        ; or lsp-deferred
 
 ;; (use-package
 ;;   pyvenv
@@ -162,7 +155,7 @@
   ;; :hook (rust-mode . lsp)
   :init
   (setq lsp-rust-server 'rust-analyzer)
-  ;; (setq lsp-rust-all-features 'all)
+  (setq lsp-rust-all-features 'all)
   (setq lsp-rust-analyzer-inlay-hints-mode t)
   (add-hook 'rust-mode-hook #'lsp-mode)
   (add-hook 'rust-mode-hook #'lsp-deferred)
@@ -195,7 +188,7 @@
 
 (use-package lsp-julia
   :config
-  (setq lsp-julia-default-environment "~/.julia/environments/v1.5")
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.6")
   (add-hook 'julia-mode-hook #'lsp)
   )
 
