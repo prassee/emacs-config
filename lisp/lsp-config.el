@@ -4,6 +4,9 @@
   (global-company-mode 1) 
   (global-set-key (kbd "C-SPC") 'company-complete))
 
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 (use-package
   flycheck
   :custom
@@ -129,26 +132,12 @@
 (use-package 
   yasnippet  )
 
-;; (use-package python-black
-;;   :demand t
-;;   :after python)
 
 (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
                           (lsp))))  ; or lsp-deferred
-
-
-;; (use-package
-;;   pyvenv
-;;   :init
-;;   (pyvenv-mode)
-;;   )
-
-;; (add-hook 'python-mode-hook
-;;           (lambda ()
-;;             (python-lsp-setup)))
 
 (use-package 
   rust-mode
