@@ -3,12 +3,17 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+
 (setq gc-cons-threshold 100000000)
+
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
 ;; Don’t compact font caches during GC.
 (setq inhibit-compacting-font-caches t)
+
 ;; (setq warning-minimum-level :emergency)
 (setq auto-revert-check-vc-info t)
+
 (defun remap-faces-default-attributes ()
    (let ((family (face-attribute 'default :family))
          (height (face-attribute 'default :height)))
@@ -102,9 +107,7 @@
 
 (load "keybindings")
 
-;; (load "org-config")
-
-;; (load "prassee-modeline")
+(load "org-config")
 
 (load "custom")
 
