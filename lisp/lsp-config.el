@@ -192,10 +192,4 @@
   (add-hook 'julia-mode-hook #'lsp)
   )
 
-;; (use-package jupyter)
-
-;; (add-to-list 'load-path "~/.emacs.d/lisp/julia-repl.el")
-;; (require 'julia-repl)
-;; (add-hook 'julia-mode-hook 'julia-repl-mode) ;; always use minor mode
-
 (provide 'lsp-config)

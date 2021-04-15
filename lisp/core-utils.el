@@ -9,7 +9,6 @@
   (exec-path-from-shell-copy-env "WORKON_HOME") 
   (exec-path-from-shell-copy-env "PATH"))
 
-
 (use-package 
   highlight-symbol 
   :diminish highlight-symbol-mode 
@@ -20,6 +19,8 @@
   expand-region 
   :commands 'er/expand-region 
   :bind ("C-=" . er/expand-region))
+
+(use-package magit)
 
 ;; (use-package magit
 ;;   :if (executable-find "git")
@@ -343,6 +344,13 @@
   (solaire-global-mode +1))
 
 ;; (use-package vscode-dark-plus-theme)
+
+(use-package dockerfile-mode)
+
+(use-package good-scroll
+  :config
+  (good-scroll-mode 1)
+  )
 
 (use-package mood-line)
 
