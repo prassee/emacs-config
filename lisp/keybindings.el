@@ -48,6 +48,8 @@
 (global-set-key (kbd "C-S-l") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
+(global-set-key (kbd "C-S-m") 'lsp-ui-flycheck-list)
+
 (global-unset-key (kbd "C-z"))
 
 ;; (define-key python-mode-map (kbd "s-l ==") 'python-black-buffer)
