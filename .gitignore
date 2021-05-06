@@ -1,0 +1,9 @@
+.cache/
+auto-save-list/
+transient/
+var/
+.lsp-session-v1
+.persistent-scratch
+projectile-bookmark*
+temp.el
+elpa/
