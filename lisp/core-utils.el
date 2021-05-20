@@ -328,14 +328,11 @@
   (setq solaire-mode-auto-swap-bg t)
   (solaire-global-mode +1))
 
-;; (use-package vscode-dark-plus-theme)
-
 (use-package dockerfile-mode)
 
 (use-package good-scroll
   :config
-  (good-scroll-mode 1)
-  )
+  (good-scroll-mode 1))
 
 (use-package mood-line)
 
