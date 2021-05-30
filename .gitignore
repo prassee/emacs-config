@@ -7,3 +7,8 @@ var/
 projectile-bookmark*
 temp.el
 elpa/
+.dap-breakpoints
+bookmarks
+projectile.cache
+recentf
+session.*

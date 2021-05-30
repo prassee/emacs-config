@@ -40,7 +40,7 @@
   (setq lsp-enable-file-watchers nil)
   (setq lsp-headerline-breadcrumb-mode nil)
   (setq lsp-modeline-diagnostics-scope :workspace)
-  :hook ((go-mode julia-mode rust-mode
+  :hook ((go-mode julia-mode rust-mode scala-mode
                       js-mode js2-mode typescript-mode web-mode)
           . lsp
          )
@@ -189,7 +189,8 @@
 ;; Enable scala-mode for highlighting, indentation and motion commands
 (use-package scala-mode
   :interpreter
-    ("scala" . scala-mode))
+  ("scala" . scala-mode)
+  )
 
 ;; Enable sbt mode for executing sbt commands
 (use-package sbt-mode
@@ -206,6 +207,9 @@
 )
 
 ;; Add metals backend for lsp-mode
-(use-package lsp-metals)
+(use-package lsp-metal
+  :ensure t
+  :hook (scala-mode . lsp)
+  )
 
 (provide 'lsp-config)
