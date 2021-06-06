@@ -73,8 +73,8 @@
 ;; (set-face-attribute 'hl-line nil :background "#454545")
 
 (set-face-attribute 'default nil
-                    :family "PragmataPro Liga"
-                    :height 182
+                    :family "Pragmatapro Mono Liga"
+                    :height 194
                     :weight 'normal
                     :width 'normal)
 
@@ -111,4 +111,6 @@
 
 (mood-line-mode)
 
-(set-face-attribute 'default nil :font "Pragmatapro Mono" :height 194)
+;; (set-face-attribute 'default nil :font "Pragmatapro Mono Liga" :height 194)
+
+(load-theme 'modus-vivendi t)
