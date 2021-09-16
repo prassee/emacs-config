@@ -14,3 +14,4 @@ recentf
 session.*
 eclipse.jdt.ls/
 workspace/
+.metadata/
