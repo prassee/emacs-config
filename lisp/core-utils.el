@@ -307,7 +307,23 @@
   :after treemacs projectile
   :ensure t)
 
-(use-package modus-vivendi-theme)
+;; (use-package modus-vivendi-theme)
+
+(use-package vscode-dark-plus-theme
+  :ensure t
+  :config
+
+   ;; Remove the border around the TODO word on org-mode files
+   (setq vscode-dark-plus-box-org-todo nil)
+
+   ;; Do not set different heights for some org faces
+   (setq vscode-dark-plus-scale-org-faces nil)
+
+  ;; Avoid inverting hl-todo face
+  (setq vscode-dark-plus-invert-hl-todo nil)
+  (load-theme 'vscode-dark-plus t)
+
+  )
 
 (use-package dockerfile-mode)
 

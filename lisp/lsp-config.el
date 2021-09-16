@@ -149,6 +149,8 @@
   (setq jupyter-repl-echo-eval-p t)
   )
 
+(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+
 (use-package 
   rust-mode
   ;; :hook (rust-mode . lsp)
@@ -185,11 +187,11 @@
 (use-package
   julia-mode)
 
-;; (use-package lsp-julia
-;;   :config
-;;   (setq lsp-julia-default-environment "~/.julia/environments/v1.6")
-;;   (add-hook 'julia-mode-hook #'lsp)
-;;   )
+(use-package lsp-julia
+  :config
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.6")
+  (add-hook 'julia-mode-hook #'lsp)
+  )
 
 ;; Enable scala-mode for highlighting, indentation and motion commands
 (use-package scala-mode

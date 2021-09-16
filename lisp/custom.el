@@ -111,6 +111,6 @@
 
 (mood-line-mode)
 
-;; (set-face-attribute 'default nil :font "Pragmatapro Mono Liga" :height 194)
+(set-face-attribute 'default nil :font "Pragmatapro Mono Liga" :height 198)
 
-(load-theme 'modus-vivendi t)
+;; (load-theme 'modus-vivendi t)
