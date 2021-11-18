@@ -14,6 +14,7 @@
 ;; (setq warning-minimum-level :emergency)
 (setq auto-revert-check-vc-info t)
 
+
 (defun remap-faces-default-attributes ()
    (let ((family (face-attribute 'default :family))
          (height (face-attribute 'default :height)))
@@ -104,6 +105,8 @@
 (load "core-utils")
 
 (load "lsp-config")
+
+;; (load "julia-repl")
 
 (load "keybindings")
 

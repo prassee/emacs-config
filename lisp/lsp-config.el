@@ -144,10 +144,10 @@
   :after python
   :hook (python-mode . python-black-on-save-mode-enable-dwim))
 
-(use-package jupyter
-  :config
-  (setq jupyter-repl-echo-eval-p t)
-  )
+;; (use-package jupyter
+;;   :config
+;;   (setq jupyter-repl-echo-eval-p t)
+;;   )
 
 (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
 
@@ -187,10 +187,15 @@
 (use-package
   julia-mode)
 
+(use-package
+  julia-repl)
+
 (use-package lsp-julia
   :config
   (setq lsp-julia-default-environment "~/.julia/environments/v1.6")
   (add-hook 'julia-mode-hook #'lsp)
+  (require 'julia-repl)
+  (add-hook 'julia-mode-hook 'julia-repl-mode)
   )
 
 ;; Enable scala-mode for highlighting, indentation and motion commands

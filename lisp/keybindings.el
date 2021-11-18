@@ -3,6 +3,9 @@
 ;; (global-set-key (kbd "C-x 2") 'split-window-vertically)
 ;; (global-set-key (kbd "C-x 3") 'split-window-horizontally)
 
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-a") 'mark-whole-buffer)
+
 (global-set-key (kbd "<f5>") 'revert-buffer)
 (global-set-key (kbd "<f8>") 'treemacs)
 (global-set-key (kbd "<f9>") 'treemacs-switch-workspace)

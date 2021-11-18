@@ -15,3 +15,5 @@ session.*
 eclipse.jdt.ls/
 workspace/
 .metadata/
+smex-items
+history

@@ -17,6 +17,9 @@
 
                               ("n" "Notes" entry (file "/data/org/notes.org")
                                "* %^{Capture a note about ? } %?" :empty-lines 2)
+
+                              ("b" "BUJO" entry (file "/data/org/bujo.org")
+                               "* %^{Capture a BUJO } %?" :empty-lines 2)
                               
                               ("g" "Capture anything in General" entry (file+headline "/data/org/general.org" "Notes")
                                "* TODO %^{Whatsup prassee...} %^G  \n %?\n %T\n  %i\n")
@@ -25,7 +28,7 @@
       org-log-done 'time org-todo-keywords'(
                                             (sequence "TODO(t)" "|" "DONE(d)")
                                             (sequence  "FEATURE/IDEA(f)" "BUG(b)" "KNOWNCAUSE(k)" "|" "IMPLEMENTED(m)"))
-      org-agenda-files (list "/data/org/general.org" "/data/org/lrde.org" "/data/org/office.org" "/data/org/vamana.org" "/data/org/notes.org")
+      org-agenda-files (list "/data/org/general.org" "/data/org/lrde.org" "/data/org/office.org" "/data/org/vamana.org" "/data/org/notes.org" "/data/org/bujo.org")
 ;;     org-priority-faces ';; ((65 :foreground "red" :background "yellow" :weight 'bold )
                           ;;  (66 :foreground "black" :background "orange" :weight 'bold)
                           ;;  (67 :foreground "black" :background "green" :weight 'bold)

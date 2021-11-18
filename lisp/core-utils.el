@@ -22,6 +22,25 @@
 
 (use-package magit)
 
+
+(use-package projectile
+  :bind
+  ("M-p" . projectile-command-map)
+  :custom
+  (projectile-completion-system 'ivy)
+  :config
+  (setq projectile-sort-order 'recentf)
+  (setq projectile-indexing-method 'hybrid)
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-mode-line-prefix " ")
+  (projectile-mode +1)
+
+  (add-to-list 'projectile-globally-ignored-directories "node_modules")
+  (add-to-list 'projectile-globally-ignored-directories ".venv")
+  (add-to-list 'projectile-globally-ignored-directories ".vscode")
+  
+  )
+
 (use-package ivy
   :hook (after-init . ivy-mode)
   :config
@@ -40,8 +59,6 @@
   (define-key ivy-mode-map       (kbd "<escape>") nil)
   (define-key ivy-minibuffer-map (kbd "<escape>") #'minibuffer-keyboard-quit))
 
-
-
 (use-package 
   ivy-rich 
   :after ivy 
@@ -50,15 +67,15 @@
   :config (setq ivy-rich-mode 1) 
   (ivy-set-display-transformer 'ivy-switch-buffer-other-window 'ivy-rich-switch-buffer-transformer))
 
-;; (use-package
-;;   smex)
+(use-package
+  smex)
 
 (use-package 
   counsel 
   :after ivy 
   :bind*                                ; load when pressed
   (("M-x"     . counsel-M-x) 
-   ("C-s"     . swiper) 
+   ("C-x C-s"     . swiper) 
    ("C-x C-b" . counsel-projectile-switch-to-buffer) 
    ("C-x C-f" . counsel-find-file) 
    ("C-x C-r" . counsel-recentf)        ; search for recently edited
@@ -74,21 +91,6 @@
    ("<f2> u"  . counsel-unicode-char) 
    ;;("<f2> r" . ivy-resume) ; Resume last Ivy-based completion
    ))            
-
-(use-package projectile
-  :bind
-  ("M-p" . projectile-command-map)
-  :custom
-  (projectile-completion-system 'ivy)
-  :config
-  (setq projectile-sort-order 'recentf)
-  (setq projectile-indexing-method 'hybrid)
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-mode-line-prefix " ")
-  (projectile-mode +1)
-
-  (add-to-list 'projectile-globally-ignored-directories "node_modules"))
-
 
 (use-package swiper
   :after ivy
@@ -303,27 +305,29 @@
 ;; (require 'treemacs-all-the-icons)
 ;; (treemacs-load-theme "all-the-icons")
 
-(use-package treemacs-projectile
-  :after treemacs projectile
-  :ensure t)
-
-;; (use-package modus-vivendi-theme)
+(use-package solaire-mode
+  :ensure t
+  :config
+  (solaire-global-mode +1))
 
 (use-package vscode-dark-plus-theme
   :ensure t
   :config
+  ;; Remove the border around the TODO word on org-mode files
+(setq vscode-dark-plus-box-org-todo nil)
 
-   ;; Remove the border around the TODO word on org-mode files
-   (setq vscode-dark-plus-box-org-todo nil)
+;; Do not set different heights for some org faces
+(setq vscode-dark-plus-scale-org-faces nil)
 
-   ;; Do not set different heights for some org faces
-   (setq vscode-dark-plus-scale-org-faces nil)
+;; Avoid inverting hl-todo face
+(setq vscode-dark-plus-invert-hl-todo nil)
+  (load-theme 'vscode-dark-plus t))
 
-  ;; Avoid inverting hl-todo face
-  (setq vscode-dark-plus-invert-hl-todo nil)
-  (load-theme 'vscode-dark-plus t)
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
 
-  )
+(use-package nord-theme)
 
 (use-package dockerfile-mode)
 

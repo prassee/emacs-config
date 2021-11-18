@@ -111,6 +111,7 @@
 
 (mood-line-mode)
 
-(set-face-attribute 'default nil :font "Pragmatapro Mono Liga" :height 198)
+(set-face-attribute 'default nil :font "Pragmatapro Mono Liga" :height 162)
 
-;; (load-theme 'modus-vivendi t)
+
+(load-theme 'vscode-dark-plus t)
