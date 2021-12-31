@@ -128,3 +128,4 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (setq custom-file (concat user-emacs-directory "temp.el"))
 
 (load-file "~/.emacs.d/temp.el")
+(customize-set-variable 'tramp-use-ssh-controlmaster-options nil)

@@ -310,7 +310,7 @@
   )
 
 (use-package 
-  yasnippet  )
+  yasnippet)
 
 (use-package python-black
   :demand t
