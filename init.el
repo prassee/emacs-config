@@ -39,7 +39,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 ;; Keep a ref to the actual file-name-handler
 (defvar default-file-name-handler-alist file-name-handler-alist)
 
-
 (setq-default indent-tabs-mode nil
               tab-width 4
               fill-column 80

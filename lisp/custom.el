@@ -14,6 +14,7 @@
 (global-hl-line-mode 1)
 (tooltip-mode 1)
 (ivy-rich-mode 1)
+(pixel-scroll-precision-mode)
 
 ;; (global-flycheck-mode 1)
 
@@ -24,6 +25,8 @@
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 (setq markdown-hr-display-char  nil)
+
+
 
 (defun disable-linum-setup-hook ()
   (setq display-line-numbers-mode -1))
@@ -116,5 +119,7 @@
         modus-vivendi-theme-fringes 'intense
         modus-vivendi-theme-intense-paren-match t
         )
+
+(setq warning-minimum-level :emergency)
 
 (load-theme 'modus-vivendi t)

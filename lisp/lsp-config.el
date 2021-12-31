@@ -21,6 +21,7 @@
   (read-process-output-max (* 1024 1024))
   (lsp-json-use-lists t)
   (lsp-signature-doc-lines 2)
+  (lsp-headerline-breadcrumb-enable nil)
   (lsp-completion-provider :capf)
   (lsp-modeline-diagnostics-mode t)
   (lsp-modeline-code-actions-mode t)
@@ -287,12 +288,18 @@
         tab-width 4) 
   )
 
-;; (use-package 
-;;   yasnippet)
+(use-package 
+  yasnippet)
 
 ;; (use-package python-black
 ;;   :demand t
 ;;   :after python)
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
 
 ;; (use-package
 ;;   pyvenv

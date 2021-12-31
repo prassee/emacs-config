@@ -7,3 +7,4 @@ temp.el
 smex-items
 eln-cache/
 transient/
+.lsp-session*
