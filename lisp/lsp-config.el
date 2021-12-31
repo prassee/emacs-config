@@ -11,28 +11,6 @@
   (flycheck-set-indication-mode 'left-fringe)
   )
 
-(defun python-lsp-setup ()
-  "Microsoft Python Language Server does not have a syntax checker, setup one for it."
-  (progn
-    ;;(require 'lsp-python-ms)
-    (f-traverse-upwards
-     (lambda (path)
-       (let ((venv-path (f-expand ".venv" path)))
-         (if (f-exists? venv-path)
-             (progn
-               (pyvenv-activate venv-path)
-               (lsp-deferred)
-               (define-key python-mode-map (kbd "C-c l") 'python-black-buffer)
-               (flycheck-add-next-checker 'lsp 'python-flake8)
-               ;; (setq-local flycheck-python-pycompile-executable "python3"
-               ;;       flycheck-python-flake8-executable "python3-flake8"
-               ;;       flycheck-python-pylint-executable "python3-pylint"
-               ;;       flycheck-python-mypy-executable "python3-mypy")
-               t)))))
-    (setq-local flycheck-checker 'python-flake8)
-    )
-  )
-
 (use-package lsp-mode
   :defer t
   :commands (lsp lsp-deferred)
@@ -309,22 +287,22 @@
         tab-width 4) 
   )
 
-(use-package 
-  yasnippet)
+;; (use-package 
+;;   yasnippet)
 
-(use-package python-black
-  :demand t
-  :after python)
+;; (use-package python-black
+;;   :demand t
+;;   :after python)
 
-(use-package
-  pyvenv
-  :init
-  (pyvenv-mode)
-  )
+;; (use-package
+;;   pyvenv
+;;   :init
+;;   (pyvenv-mode)
+;;   )
 
-(add-hook 'python-mode-hook
-          (lambda ()
-            (python-lsp-setup)))
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (python-lsp-setup)))
 
 
 (use-package 
@@ -337,14 +315,6 @@
   (add-hook 'rust-mode-hook #'lsp-mode) 
   (add-hook 'rust-mode-hook #'yas-minor-mode))
 
-(use-package 
-  toml-mode)
-
-(use-package
-  typescript-mode
-  :hook (typescript-mode . lsp)
-  )
-
 ;; Add keybindings for interacting with Cargo
 (use-package 
   cargo
@@ -354,18 +324,26 @@
   flycheck-rust
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
+(use-package 
+  toml-mode)
+
+(use-package
+  typescript-mode
+  :hook (typescript-mode . lsp)
+  )
+
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
   (setq lsp-diagnostics-modeline-scope :workspace)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
-(use-package
-  julia-mode)
+;; (use-package
+;;   julia-mode)
 
-(use-package lsp-julia
-  :config
-  (setq lsp-julia-default-environment "~/.julia/environments/v1.5")
-  (add-hook 'julia-mode-hook #'lsp)
-  )
+;; (use-package lsp-julia
+;;   :config
+;;   (setq lsp-julia-default-environment "~/.julia/environments/v1.5")
+;;   (add-hook 'julia-mode-hook #'lsp)
+;;   )
 
 (provide 'lsp-config)

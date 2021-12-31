@@ -279,9 +279,9 @@
   :after treemacs projectile
   :ensure t)
 
-;; (use-package treemacs-magit
-;;   :after treemacs magit
-;;   :ensure t)
+(use-package treemacs-magit
+  :after treemacs magit
+  :ensure t)
 
 (use-package ivy-posframe
   :ensure t
