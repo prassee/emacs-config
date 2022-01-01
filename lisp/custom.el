@@ -68,7 +68,7 @@
 ;; (with-eval-after-load 'flycheck
 ;;   (flycheck-pos-tip-mode))
 
-;; ;; (global-flycheck-mode 1)
+;; (global-flycheck-mode 1)
 
 ;; (set-face-attribute 'hl-line nil :background "#454545")
 
