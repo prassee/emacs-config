@@ -226,25 +226,19 @@
 
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
-;; (use-package
-;;   ivy-posframe
-;;   :ensure t
-;;   :config (progn
-;;             (setq ivy-posframe-display-functions-alist
-;;                   '((t . ivy-posframe-display-at-frame-center))
-;;                   ivy-posframe-border-width 2
-;;                   ivy-posframe
-;;                   '((t (:background "#ffffff")))
-;;                   ivy-posframe-border
-;;                   '((t (:background "#b3daff")))
-;;                   ivy-posframe-cursor
-;;                   '((t (:background "#00ff00")))
-;;                   ivy-posframe-parameters
-;;                   '((left-fringe . 8)
-;;                     (right-fringe . 8))))
-;;   (ivy-posframe-mode 1))
+(use-package vscode-dark-plus-theme
+  :ensure t
+  :config ;; Remove the border around the TODO word on org-mode files
+  (setq vscode-dark-plus-box-org-todo nil)
 
-(use-package modus-vivendi-theme)
+  ;; Do not set different heights for some org faces
+  (setq vscode-dark-plus-scale-org-faces nil)
+
+  ;; Avoid inverting hl-todo face
+  (setq vscode-dark-plus-invert-hl-todo nil)
+  ;; (load-theme 'vscode-dark-plus t)
+  )
+
 
 (use-package mood-line)
 

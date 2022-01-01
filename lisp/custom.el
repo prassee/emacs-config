@@ -14,7 +14,7 @@
 (global-hl-line-mode 1)
 (tooltip-mode 1)
 (ivy-rich-mode 1)
-(pixel-scroll-precision-mode)
+;; (pixel-scroll-precision-mode)
 
 ;; (global-flycheck-mode 1)
 
@@ -119,12 +119,8 @@
 
 (mood-line-mode)
 
-(setq modus-vivendi-theme-intense-hl-line t
-      modus-vivendi-theme-no-mixed-fonts t
-      modus-vivendi-theme-completions 'opinionated
-      modus-vivendi-theme-fringes 'intense
-      modus-vivendi-theme-intense-paren-match t)
-
 (setq warning-minimum-level :emergency)
 
-(load-theme 'modus-vivendi t)
+(load-theme 'vscode-dark-plus t)
+
+(provide 'core-utils)
