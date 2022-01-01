@@ -27,7 +27,6 @@
 (setq markdown-hr-display-char  nil)
 
 
-
 (defun disable-linum-setup-hook ()
   (setq display-line-numbers-mode -1))
 
@@ -110,7 +109,6 @@
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-;;(zerodark-setup-modeline-format)
 (mood-line-mode)
 
 (setq modus-vivendi-theme-intense-hl-line t

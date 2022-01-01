@@ -9,9 +9,7 @@
 If you experience freezing, decrease this.  If you experience stuttering, increase this.")
 
 (add-hook 'emacs-startup-hook
-          (lambda ()
-            (setq gc-cons-threshold better-gc-cons-threshold)
-            ))
+          (lambda () (setq gc-cons-threshold better-gc-cons-threshold)))
 ;; -BetterGC
 
 ;; AutoGC
@@ -20,8 +18,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
             (if (boundp 'after-focus-change-function)
                 (add-function :after after-focus-change-function
                               (lambda ()
-                                (unless (frame-focus-state)
-                                  (garbage-collect))))
+                                (unless (frame-focus-state) (garbage-collect))))
               (add-hook 'after-focus-change-function 'garbage-collect))
             (defun gc-minibuffer-setup-hook ()
               (setq gc-cons-threshold (* better-gc-cons-threshold 2)))
@@ -46,7 +43,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
               word-wrap t
               blink-cursor-mode t
               blink-cursor-interval 0.2
-              cursor-type '(bar . 2)
+              cursor-type
+              '(bar . 2)
               right-fringe-width 0
               left-fringe-width  3
               frame-title-format "%f")
@@ -70,15 +68,21 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
       use-file-dialog nil
       use-dialog-box nil
       ring-bell-function 'ignore
-      mouse-wheel-scroll-amount '(1 ((shift) . 1) 
-                                    ((control) . nil))
+      mouse-wheel-scroll-amount
+      '(1
+        ((shift)
+         . 1)
+        ((control)
+         . nil))
       mouse-wheel-progressive-speed nil
       global-auto-revert-non-file-buffers t
-      package-archives '(("gnu" . "http://elpa.gnu.org/packages/") 
-                         ("org" . "http://orgmode.org/elpa/") 
-                         ("melpa" . "http://melpa.org/packages/") 
-                         ("melpa-stable" . "http://stable.melpa.org/packages/"))
-      package-archive-priorities '(("melpa" . 1)))
+      package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")
+        ("melpa" . "http://melpa.org/packages/")
+        ("melpa-stable" . "http://stable.melpa.org/packages/"))
+      package-archive-priorities
+      '(("melpa" . 1)))
 
 
 ;; the package manager
@@ -86,16 +90,19 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-(when (not package-archive-contents) 
-  (package-refresh-contents) 
+(when (not package-archive-contents)
+  (package-refresh-contents)
   (package-install 'use-package))
 
-(defconst user-init-dir 
-  (cond ((boundp 'user-emacs-directory) user-emacs-directory) 
-        ((boundp 'user-init-directory) user-init-directory) 
-        (t "~/.emacs.d/")))
+(defconst user-init-dir
+  (cond
+   ((boundp 'user-emacs-directory)
+    user-emacs-directory)
+   ((boundp 'user-init-directory)
+    user-init-directory)
+   (t "~/.emacs.d/")))
 
-(defun load-user-file (file) 
+(defun load-user-file (file)
   (interactive "f")
   "Load a file in current user's configuration directory"
   (load-file (expand-file-name file user-init-dir)))
@@ -112,15 +119,16 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (load "org-config")
 
+(load "elfmt")
+
 (load "custom")
 
 ;; disable bold face across after loading everything
 (set-face-bold-p 'bold nil)
 
 (mapc
-(lambda (face)
-(set-face-attribute face nil :weight 'normal :underline nil))
-(face-list))
+ (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil))
+ (face-list))
 
 (shell-command "truncate -s 0 ~/.emacs.d/temp.el")
 
