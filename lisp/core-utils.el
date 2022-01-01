@@ -226,16 +226,23 @@
 
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
-(use-package
-  ivy-posframe
-  :ensure t
-  :init (setq ivy-posframe-display-functions-alist
-              '((t . ivy-posframe-display-at-frame-center)))
-  (setq ivy-posframe-parameters '((left-fringe . 8) (right-fringe . 8)))
-  (setq ivy-posframe-border-width 2)
-
-  (ivy-posframe-mode 1))
-
+;; (use-package
+;;   ivy-posframe
+;;   :ensure t
+;;   :config (progn
+;;             (setq ivy-posframe-display-functions-alist
+;;                   '((t . ivy-posframe-display-at-frame-center))
+;;                   ivy-posframe-border-width 2
+;;                   ivy-posframe
+;;                   '((t (:background "#ffffff")))
+;;                   ivy-posframe-border
+;;                   '((t (:background "#b3daff")))
+;;                   ivy-posframe-cursor
+;;                   '((t (:background "#00ff00")))
+;;                   ivy-posframe-parameters
+;;                   '((left-fringe . 8)
+;;                     (right-fringe . 8))))
+;;   (ivy-posframe-mode 1))
 
 (use-package modus-vivendi-theme)
 
