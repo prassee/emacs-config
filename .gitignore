@@ -9,3 +9,5 @@ eln-cache/
 transient/
 .lsp-session*
 bookmarks
+eclipse.jdt.ls/
+workspace/

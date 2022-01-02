@@ -26,7 +26,7 @@
   (lsp-report-if-no-buffer t)
   (lsp-eldoc-hook nil)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
-  :hook ((python-mode go-mode julia-mode rust-mode
+  :hook ((python-mode go-mode julia-mode rust-mode java-mode 
                       js-mode js2-mode typescript-mode web-mode)
          . lsp))
 
@@ -328,6 +328,9 @@
 (use-package toml-mode)
 
 (use-package typescript-mode :hook (typescript-mode . lsp))
+
+
+(use-package lsp-java)
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file

@@ -50,7 +50,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
               frame-title-format "%f")
 
 
-
 ;; Don’t compact font caches during GC.
 (setq inhibit-compacting-font-caches t
       ;; Set the file-name-handler to nil (because regexing is cpu intensive)
