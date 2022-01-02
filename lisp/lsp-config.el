@@ -43,18 +43,17 @@
   ;; (setq lsp-ui-doc-use-webkit t)
   :custom ;; lsp-ui-doc
   (lsp-ui-doc-enable t)
-
-  (lsp-ui-doc-use-webkit t)
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
+  (lsp-ui-doc-show-with-cursor t)
   ;;  (lsp-ui-doc-border (face-foreground 'default))
   (lsp-ui-doc-border   "orange")
+  (lsp-headerline-breadcrumb-enable nil)
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-position 'top) ;; top, bottom, or at-point
   (lsp-ui-doc-max-width 65)
   (lsp-ui-doc-max-height 29)
   (lsp-ui-doc-use-childframe t)
-
   ;; lsp-ui-flycheck
   (lsp-ui-flycheck--start t)
   (lsp-ui-flycheck-enable t)
@@ -298,16 +297,6 @@
   :ensure t
   :hook (python-mode . (lambda () (require 'lsp-pyright) (lsp))))  ; or lsp-deferred
 
-;; (use-package
-;;   pyvenv
-;;   :init
-;;   (pyvenv-mode)
-;;   )
-
-;; (add-hook 'python-mode-hook
-;;           (lambda ()
-;;             (python-lsp-setup)))
-
 
 (use-package
   rust-mode
@@ -328,7 +317,6 @@
 (use-package toml-mode)
 
 (use-package typescript-mode :hook (typescript-mode . lsp))
-
 
 (use-package lsp-java)
 

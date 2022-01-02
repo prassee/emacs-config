@@ -1,13 +1,3 @@
-.cache/
-auto-save-list/
-elpa/
-.persistent-scratch
-projectile-bookmarks.eld
-temp.el
-smex-items
-eln-cache/
-transient/
-.lsp-session*
-bookmarks
-eclipse.jdt.ls/
-workspace/
+*
+!lisp/
+!init.el

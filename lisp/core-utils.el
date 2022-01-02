@@ -226,20 +226,32 @@
 
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
-(use-package vscode-dark-plus-theme
-  :ensure t
-  :config ;; Remove the border around the TODO word on org-mode files
-  (setq vscode-dark-plus-box-org-todo nil)
+(use-package modus-themes
+  :ensure                         ; omit this to use the built-in themes
+  :init ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-region
+        '(bg-only no-extend))
 
-  ;; Do not set different heights for some org faces
-  (setq vscode-dark-plus-scale-org-faces nil)
-
-  ;; Avoid inverting hl-todo face
-  (setq vscode-dark-plus-invert-hl-todo nil)
-  ;; (load-theme 'vscode-dark-plus t)
-  )
-
+  ;; Load the theme files before enabling a theme (else you get an error).
+  (modus-themes-load-themes)
+  :config ;; Load the theme of your choice:
+  (modus-themes-load-vivendi) ;; OR (modus-themes-load-vivendi)
+  :bind ("<f5>" . modus-themes-toggle))
 
 (use-package mood-line)
+
+(use-package sqlformat)
+
+(use-package
+  ivy-posframe
+  :ensure t
+  :init (setq ivy-posframe-display-functions-alist
+              '((t . ivy-posframe-display-at-frame-center)))
+  (setq ivy-posframe-parameters '((left-fringe . 8) (right-fringe . 8)))
+  (setq ivy-posframe-border-width 2)
+  (ivy-posframe-mode 1))
+
 
 (provide 'core-utils)

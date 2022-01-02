@@ -121,6 +121,6 @@
 
 (setq warning-minimum-level :emergency)
 
-(load-theme 'vscode-dark-plus t)
+(load-theme 'modus-vivendi t)
 
 (provide 'core-utils)
