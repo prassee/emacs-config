@@ -1,4 +1,9 @@
 ;; mac specific
+(set-face-attribute 'default nil
+                    :family "PragmataPro Liga"
+                    :height 169
+                    :weight 'normal
+                    :width 'normal)
 (cua-mode t)
 (show-paren-mode 1)
 (column-number-mode 1)
@@ -71,13 +76,6 @@
 ;; (global-flycheck-mode 1)
 
 ;; (set-face-attribute 'hl-line nil :background "#454545")
-
-
-(set-face-attribute 'default nil
-                    :family "PragmataPro Liga"
-                    :height 164
-                    :weight 'normal
-                    :width 'normal)
 
 (let ((alist
        `((?! . ,(regexp-opt '("!!" "!=" "!==")))

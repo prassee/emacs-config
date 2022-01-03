@@ -14,15 +14,15 @@
 (setq org-capture-templates
       '(("o" "Capture a Office Tasks" entry
          (file+headline "/data/org/office.org" "Office")
-         "* TODO %^{what's task in Office ?} %^G  \n %?\n %T\n  %i\n")
+         "* TODO %^{what's task in Office ?} DEADLINE: %^T  %^G \n %?\n %T\n  %i \n")
 
         ("v" "What todo on Vamana?" entry
          (file+headline "/data/org/vamana.org" "Vamana")
-         "* TODO %^{what's task in Vamana ?} %^G  \n %?\n %T\n  %i\n")
+         "* TODO %^{what's task in Vamana ?} DEADLINE: %^T  %^G \n %?\n %T\n  %i \n")
 
         ("l" "What are you learn/explor'ing" entry
          (file+headline "/data/org/lrde.org" "LRDE")
-         "* TODO %^{what's to Learn / Research / Explore ?} %^G  \n %?\n %T\n  %i\n")
+         "* TODO %^{what's to Learn / Research / Explore ?}  %^G \n %?\n %T\n %i \n")
 
         ("n" "Notes" entry
          (file "/data/org/notes.org")
@@ -35,7 +35,7 @@
       org-log-done 'time
       org-todo-keywords'((sequence
                           "TODO(t)"
-                          "Doing(d)" "|"
+                          "DOING(d)" "|"
                           "DONE(o)")
                          (sequence
                           "FEATURE/IDEA(f)"
@@ -85,6 +85,10 @@
       org-enforce-todo-dependencies t
 
       org-agenda-window-setup 'current-window
+      org-deadline-warning-days 7
+      ;;show me tasks scheduled or due in next fortnight
+      org-agenda-span ' fortnight
+      org-agenda-skip-scheduled-if-deadline-is-shown t
       org-agenda-use-time-grid nil
       org-agenda-skip-deadline-if-done t
       org-agenda-skip-scheduled-if-done t
@@ -93,6 +97,11 @@
        ((agenda priority-down alpha-up)
         (todo priority-down alpha-up)
         (tags priority-down alpha-up)))
+      ;; (quote
+      ;;  ((agenda deadline-up priority-down)
+      ;;   (todo priority-down category-keep)
+      ;;   (tags priority-down category-keep)
+      ;;   (search category-keep)))
 
       org-agenda-prefix-format
       (quote

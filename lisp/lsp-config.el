@@ -289,14 +289,14 @@
 
 (use-package yasnippet)
 
-;; (use-package python-black
-;;   :demand t
-;;   :after python)
+(use-package python-black
+  :demand t
+  :after python
+  :hook (python-mode . python-black-on-save-mode-enable-dwim))
 
 (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda () (require 'lsp-pyright) (lsp))))  ; or lsp-deferred
-
 
 (use-package
   rust-mode
