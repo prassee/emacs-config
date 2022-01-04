@@ -135,7 +135,6 @@
   (markdown-pre-face ((t (:foreground "#bd98fe"))))
   :mode "\\.md\\'")
 
-(use-package elisp-format)
 
 (use-package multiple-cursors :init (progn (require 'multiple-cursors)))
 
@@ -172,30 +171,39 @@
   :config (progn
             (setq treemacs-collapse-dirs
                   (if treemacs-python-executable 3 0)
-                  treemacs-deferred-git-apply-delay      0.5 treemacs-directory-name-transformer
-                  #'identity treemacs-display-in-side-window        t treemacs-eldoc-display
-                  t treemacs-file-event-delay              5000 treemacs-file-extension-regex
+                  treemacs-deferred-git-apply-delay      0.5
+                  treemacs-directory-name-transformer
+                  #'identity treemacs-display-in-side-window        t treemacs-eldoc-display t
+                  treemacs-file-event-delay              5000 treemacs-file-extension-regex
                   treemacs-last-period-regex-value treemacs-file-follow-delay             0.2
-                  treemacs-file-name-transformer         #'identity treemacs-follow-after-init
-                  t treemacs-git-command-pipe              "" treemacs-goto-tag-strategy
+                  treemacs-file-name-transformer         #'identity treemacs-follow-after-init t
+                  treemacs-git-command-pipe              "" treemacs-goto-tag-strategy
                   'refetch-index treemacs-indentation                   1
-                  treemacs-indentation-string            " " treemacs-is-never-other-window
-                  nil treemacs-max-git-entries               5000 treemacs-missing-project-action
-                  'ask treemacs-move-forward-on-expand        nil treemacs-no-png-images
-                  t treemacs-no-delete-other-windows       t treemacs-project-follow-cleanup
-                  nil treemacs-persist-file
+                  treemacs-indentation-string            " " treemacs-is-never-other-window nil
+                  treemacs-max-git-entries               5000 treemacs-missing-project-action 'ask
+                  treemacs-move-forward-on-expand        nil treemacs-no-png-images t
+                  treemacs-no-delete-other-windows       t treemacs-project-follow-cleanup nil
+                  treemacs-persist-file
                   (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
-                  treemacs-position                      'left treemacs-recenter-distance
-                  0.1 treemacs-recenter-after-file-follow    nil treemacs-recenter-after-tag-follow
-                  nil treemacs-recenter-after-project-jump   'always
-                  treemacs-recenter-after-project-expand 'on-distance treemacs-show-cursor
-                  nil treemacs-show-hidden-files             t treemacs-silent-filewatch
-                  nil treemacs-silent-refresh                nil treemacs-sorting
-                  'alphabetic-asc treemacs-space-between-root-nodes      nil
-                  treemacs-tag-follow-cleanup            t treemacs-tag-follow-delay
-                  1.5 treemacs-user-mode-line-format         'none treemacs-user-header-line-format
-                  nil treemacs-width                         20 treemacs-workspace-switch-cleanup
-                  'files)
+                  treemacs-position
+                  'left treemacs-recenter-distance 0.1
+                  treemacs-recenter-after-file-follow    nil
+                  treemacs-recenter-after-tag-follow nil
+                  treemacs-recenter-after-project-jump
+                  'always
+                  treemacs-recenter-after-project-expand
+                  'on-distance treemacs-show-cursor nil
+                  treemacs-show-hidden-files             t
+                  treemacs-silent-filewatch nil
+                  treemacs-silent-refresh                nil
+                  treemacs-sorting 'alphabetic-asc
+                  treemacs-space-between-root-nodes      nil
+                  treemacs-tag-follow-cleanup            t
+                  treemacs-tag-follow-delay 1.5
+                  treemacs-user-mode-line-format 'none
+                  treemacs-user-header-line-format nil
+                  treemacs-width                         20
+                  treemacs-workspace-switch-cleanup 'files)
 
             ;; The default width and height of the icons is 22 pixels. If you are
             ;; using a Hi-DPI display, uncomment this to double the icon size.
@@ -218,25 +226,21 @@
               ("C-x t C-t" . treemacs-find-file)
               ("C-x t M-t" . treemacs-find-tag)))
 
-;; (use-package treemacs-all-the-icons)
-;; (require 'treemacs-all-the-icons)
-;; (treemacs-load-theme "all-the-icons")
 
 (use-package treemacs-projectile :after treemacs projectile :ensure t)
 
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
-(use-package modus-themes
-  :ensure                         ; omit this to use the built-in themes
-  :init ;; Add all your customizations prior to loading the themes
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs nil
-        modus-themes-region
+(use-package
+  modus-themes
+  :ensure             ; omit this to use the built-in themes
+  :init               ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t modus-themes-bold-constructs nil modus-themes-region
         '(bg-only no-extend))
 
   ;; Load the theme files before enabling a theme (else you get an error).
   (modus-themes-load-themes)
-  :config ;; Load the theme of your choice:
+  :config                     ;; Load the theme of your choice:
   (modus-themes-load-vivendi) ;; OR (modus-themes-load-vivendi)
   :bind ("<f5>" . modus-themes-toggle))
 
@@ -253,5 +257,5 @@
   (setq ivy-posframe-border-width 2)
   (ivy-posframe-mode 1))
 
-
+ 
 (provide 'core-utils)

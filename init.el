@@ -2,7 +2,13 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+;; mac specific
 
+(set-face-attribute 'default nil
+                    :family "PragmataPro Liga"
+                    :height 169
+                    :weight 'normal
+                    :width 'normal)
 ;; BetterGC
 (defvar better-gc-cons-threshold 67108864 ; 64mb
   "The default value to use for `gc-cons-threshold'.
