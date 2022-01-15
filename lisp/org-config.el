@@ -24,10 +24,10 @@
          (file+headline "/data/org/lrde.org" "LRDE")
          "* TODO %^{what's to Learn / Research / Explore ?}  %^G \n %?\n %T\n %i \n")
 
-        ("n" "Notes" entry
+        ("n" "Qik Notes" entry
          (file "/data/org/notes.org")
-         "* %^{Capture a note about ? } %?" :empty-lines 2)
-
+         "* TODO %^{Capture a note about ? } %?" :empty-lines 2)
+        
         ("g" "Capture a ad-hoc thought" entry
          (file+headline "/data/org/general.org" "Notes")
          "* TODO %^{what going on ?} %^G  \n %?\n %T\n  %i\n"))

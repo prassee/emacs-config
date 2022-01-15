@@ -6,17 +6,19 @@
 
 (set-face-attribute 'default nil
                     :family "PragmataPro Liga"
-                    :height 169
+                    :height 164
+                    ;; :family "Cascadia Code"
+                    ;; :height 120
                     :weight 'normal
                     :width 'normal)
 ;; BetterGC
-(defvar better-gc-cons-threshold 67108864 ; 64mb
+(defvar better-gc-cons-threshold 134217728 ; 64mb
   "The default value to use for `gc-cons-threshold'.
 If you experience freezing, decrease this.  If you experience stuttering, increase this.")
 
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold better-gc-cons-threshold)))
-;; -BetterGC
+;; BetterGC
 
 ;; AutoGC
 (add-hook 'emacs-startup-hook
