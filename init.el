@@ -7,10 +7,9 @@
 (set-face-attribute 'default nil
                     :family "PragmataPro Liga"
                     :height 164
-                    ;; :family "Cascadia Code"
-                    ;; :height 120
                     :weight 'normal
                     :width 'normal)
+
 ;; BetterGC
 (defvar better-gc-cons-threshold 134217728 ; 64mb
   "The default value to use for `gc-cons-threshold'.

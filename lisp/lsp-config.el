@@ -26,7 +26,7 @@
   (lsp-report-if-no-buffer t)
   (lsp-eldoc-hook nil)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
-  :hook ((python-mode go-mode julia-mode rust-mode java-mode 
+  :hook ((python-mode go-mode julia-mode rust-mode java-mode
                       js-mode js2-mode typescript-mode web-mode)
          . lsp))
 
@@ -46,7 +46,8 @@
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-show-with-cursor t)
-  ;;  (lsp-ui-doc-border (face-foreground 'default))
+  (lsp-ui-doc-enhanced-markdown nil)
+  (lsp-ui-doc-use-webkit t)
   (lsp-ui-doc-border   "orange")
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-ui-doc-include-signature t)
@@ -318,7 +319,9 @@
 
 (use-package typescript-mode :hook (typescript-mode . lsp))
 
-(use-package lsp-java)
+(use-package lsp-java
+  :config (setq lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+                lsp-java-format-settings-profile "GoogleStyle"))
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
@@ -330,5 +333,9 @@
 (use-package lsp-julia
   :config (setq lsp-julia-default-environment "~/.julia/environments/v1.7")
   (add-hook 'julia-mode-hook #'lsp))
+
+(use-package dockerfile-mode)
+
+(use-package lsp-docker)
 
 (provide 'lsp-config)

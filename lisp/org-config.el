@@ -1,5 +1,7 @@
 (add-hook 'org-mode-hook 'visual-line-mode)
 
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
                            (0
@@ -9,7 +11,6 @@
                                (match-beginning 1)
                                (match-end 1)
                                "•"))))))
-
 
 (setq org-capture-templates
       '(("o" "Capture a Office Tasks" entry
@@ -24,10 +25,10 @@
          (file+headline "/data/org/lrde.org" "LRDE")
          "* TODO %^{what's to Learn / Research / Explore ?}  %^G \n %?\n %T\n %i \n")
 
-        ("n" "Qik Notes" entry
+        ("n" "Quick Notes" entry
          (file "/data/org/notes.org")
          "* TODO %^{Capture a note about ? } %?" :empty-lines 2)
-        
+
         ("g" "Capture a ad-hoc thought" entry
          (file+headline "/data/org/general.org" "Notes")
          "* TODO %^{what going on ?} %^G  \n %?\n %T\n  %i\n"))
@@ -52,7 +53,6 @@
       ;;  (68 :foreground "black" :background "green")
       ;;  )
       org-hide-emphasis-markers t
-
 
       org-refile-targets
       '((org-agenda-files :maxlevel . 3))

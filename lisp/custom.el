@@ -6,8 +6,6 @@
 (electric-indent-mode 1)
 (global-auto-revert-mode 1)
 (scroll-bar-mode 0)
-(pixel-scroll-mode 1)
-(pixel-scroll-precision-mode 1)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (global-unset-key (kbd "C-z"))
@@ -17,10 +15,6 @@
 (tooltip-mode 1)
 (ivy-rich-mode 1)
 
-;; (pixel-scroll-precision-mode)
-
-;; (global-flycheck-mode 1)
-
 (setq file-name-handler-alist nil)
 
 (setq ivy-format-function 'ivy-format-function-line)
@@ -28,7 +22,6 @@
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 (setq markdown-hr-display-char  nil)
-
 
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
 
@@ -58,12 +51,13 @@
                        treemacs-directory-collapsed-face
                        treemacs-file-face
                        treemacs-tags-face))
-              (set-face-attribute face nil :family "Ubuntu" :height 120))
+              (set-face-attribute face nil :family "ubuntu" :height 110 ))
             ))
 
 (defface custom-line-highlight
   '((t (:background "blue" :foreground "white" :extend t)))
   "")
+
 (add-hook 'treemacs-mode-hook
           (defun channge-hl-line-mode ()
             (setq-local hl-line-face 'custom-line-highlight)
@@ -71,7 +65,6 @@
             (treemacs--setup-icon-background-colors)))
 
 ;; (add-hook 'after-init-hook 'org-agenda-list)
-
 
 ;; (with-eval-after-load 'lsp-mode
 ;;   ;; (add-hook 'lsp-managed-mode-hook 'lsp-modeline-diagnostics-mode)
@@ -136,6 +129,4 @@
 
 (setq warning-minimum-level :emergency)
 
-(load-theme 'modus-vivendi t)
-
-(provide 'core-utils)
+(provide 'custom)

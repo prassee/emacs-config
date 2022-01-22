@@ -234,18 +234,81 @@
 
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
-(use-package
-  modus-themes
-  :ensure             ; omit this to use the built-in themes
-  :init               ;; Add all your customizations prior to loading the themes
-  (setq modus-themes-italic-constructs t modus-themes-bold-constructs nil modus-themes-region
-        '(bg-only no-extend))
 
-  ;; Load the theme files before enabling a theme (else you get an error).
+;; (use-package vscode-dark-plus-theme
+;;   :ensure t
+;;   :config ;; Remove the border around the TODO word on org-mode files
+;;   (setq vscode-dark-plus-box-org-todo nil)
+
+;;   ;; Do not set different heights for some org faces
+;;   (setq vscode-dark-plus-scale-org-faces nil)
+
+;;   ;; Avoid inverting hl-todo face
+;;   (setq vscode-dark-plus-invert-hl-todo nil)
+
+;;   (load-theme 'vscode-dark-plus t))
+
+;; (use-package monokai-theme
+;;   :ensure t
+;;   :config 
+;;   ;; (setq monokai-height-minus-1 0.8
+;;   ;;       monokai-height-plus-1 1.1
+;;   ;;       monokai-height-plus-2 1.15
+;;   ;;       monokai-height-plus-3 1.2
+;;   ;;       monokai-height-plus-4 1.3)
+;;   ;; (setq monokai-user-variable-pitch t)
+;;   (load-theme 'monokai t))
+
+
+(use-package modus-themes
+  :ensure
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-region '(bg-only no-extend)
+        ;; Options for `modus-themes-mode-line' are either nil, or a list
+        ;; that can combine any of `3d' OR `moody', `borderless',
+        ;; `accented', and a natural number for extra padding
+        modus-themes-mode-line '(4 accented borderless)
+
+        ;; Options for `modus-themes-markup' are either nil, or a list
+        ;; that can combine any of `bold', `italic', `background',
+        ;; `intense'.
+        modus-themes-markup '(bold italic intense background)
+
+        ;; Options for `modus-themes-hl-line' are either nil (the default),
+        ;; or a list of properties that may include any of those symbols:
+        ;; `accented', `underline', `intense'
+        modus-themes-hl-line '(underline accented)
+
+        ;; Options for `modus-themes-paren-match' are either nil (the
+        ;; default), or a list of properties that may include any of those
+        ;; symbols: `bold', `intense', `underline'
+        modus-themes-paren-match '(bold intense)
+        
+      modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
+
+      modus-themes-org-agenda ; this is an alist: read the manual or its doc string
+      '((header-block . (variable-pitch 1.3))
+        (header-date . (grayscale workaholic bold-today 1.1))
+        (event . (accented varied))
+        (scheduled . uniform)
+        (habit . traffic-light))
+
+      modus-themes-headings ; this is an alist: read the manual or its doc string
+      '((1 . (overline background variable-pitch 1.3))
+        (2 . (rainbow overline 1.1))
+        (t . (semibold)))
+        )
+
+  ;; Load the theme files before enabling a theme
   (modus-themes-load-themes)
-  :config                     ;; Load the theme of your choice:
-  (modus-themes-load-vivendi) ;; OR (modus-themes-load-vivendi)
-  :bind ("<f5>" . modus-themes-toggle))
+  :config
+  ;; Load the theme of your choice:
+  (modus-themes-load-vivendi)
+
+  )
 
 (use-package mood-line)
 
@@ -263,13 +326,10 @@
 (use-package mermaid-mode
   :ensure t
   :init (setq
-         mermaid-mmdc-location "/data/cellar/mmdc/node_modules/.bin/mmdc"
+         mermaid-mmdc-location "/data/cellar/mermaid-cli/node_modules/.bin/mmdc"
          mermaid-tmp-dir "/media/saipranav/6664-6532/mermaidDiagrams/")
   :mode "\\.mermaid\\'")
 
-;; (use-package smooth-scroll
-;;   :config
-;;   (smooth-scroll-mode 1)
-;;   (setq smooth-scroll/vscroll-step-size 15))
+(use-package good-scroll :config (good-scroll-mode 1))
 
 (provide 'core-utils)
