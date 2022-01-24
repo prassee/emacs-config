@@ -4,8 +4,10 @@
 ;; (global-set-key (kbd "C-x 3") 'split-window-horizontally)
 
 (global-set-key (kbd "<f5>") 'revert-buffer)
-(global-set-key (kbd "<f8>") 'treemacs)
-(global-set-key (kbd "<f9>") 'treemacs-switch-workspace)
+;; (global-set-key (kbd "<f8>") 'treemacs)
+;; (global-set-key (kbd "<f9>") 'treemacs-switch-workspace)
+
+(global-set-key (kbd "<f9>") 'projectile-persp-switch-project)
 
 (global-set-key "\C-x2" 'split-window-vertically)
 (global-set-key "\C-x3" 'split-window-horizontally)
@@ -42,7 +44,7 @@
 (define-key global-map (kbd "<S-down-mouse-1>") 'mouse-save-then-kill)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-x o") 'create-org-file)
+;; (global-set-key (kbd "C-x o") 'create-org-file)
   
 (global-set-key (kbd "C-S-q") 'mc/edit-lines)
 (global-set-key (kbd "C-S-l") 'mc/edit-ends-of-lines)

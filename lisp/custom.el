@@ -51,7 +51,7 @@
                        treemacs-directory-collapsed-face
                        treemacs-file-face
                        treemacs-tags-face))
-              (set-face-attribute face nil :family "ubuntu" :height 110 ))
+              (set-face-attribute face nil :family "ubuntu" :height 120 ))
             ))
 
 (defface custom-line-highlight
@@ -127,6 +127,11 @@
 
 (mood-line-mode)
 
+(persp-mode)
+
+
 (setq warning-minimum-level :emergency)
+
+;; (load-theme 'vscode-dark-plus t)
 
 (provide 'custom)

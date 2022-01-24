@@ -30,9 +30,6 @@
                       js-mode js2-mode typescript-mode web-mode)
          . lsp))
 
-
-(use-package lsp-treemacs)
-
 (use-package
   lsp-ui
   ;; :custom-face (lsp-ui-doc-background ((t
