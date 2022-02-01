@@ -1,7 +1,5 @@
 (add-hook 'org-mode-hook 'visual-line-mode)
 
-(add-hook 'org-mode-hook 'variable-pitch-mode)
-
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
                            (0
@@ -14,23 +12,27 @@
 
 (setq org-capture-templates
       '(("o" "Capture a Office Tasks" entry
-         (file+headline "/data/org/office.org" "Office")
+         (file+headline "/data/dotfiles/org/office.org" "Office")
          "* TODO %^{what's task in Office ?} DEADLINE: %^T  %^G \n %?\n %T\n  %i \n")
 
         ("v" "What todo on Vamana?" entry
-         (file+headline "/data/org/vamana.org" "Vamana")
+         (file+headline "/data/dotfiles/org/vamana.org" "Vamana")
          "* TODO %^{what's task in Vamana ?} DEADLINE: %^T  %^G \n %?\n %T\n  %i \n")
 
         ("l" "What are you learn/explor'ing" entry
-         (file+headline "/data/org/lrde.org" "LRDE")
+         (file+headline "/data/dotfiles/org/lrde.org" "LRDE")
          "* TODO %^{what's to Learn / Research / Explore ?}  %^G \n %?\n %T\n %i \n")
 
         ("n" "Quick Notes" entry
-         (file "/data/org/notes.org")
+         (file "/data/dotfiles/org/notes.org")
          "* TODO %^{Capture a note about ? } %?" :empty-lines 2)
 
+         ("d" "Quick Document" entry
+         (file "/data/dotfiles/org/documentation.org")
+         "* TODO %^{Quickly 'Document' steps about ? } %?" :empty-lines 2)
+        
         ("g" "Capture a ad-hoc thought" entry
-         (file+headline "/data/org/general.org" "Notes")
+         (file+headline "/data/dotfiles/org/general.org" "Notes")
          "* TODO %^{what going on ?} %^G  \n %?\n %T\n  %i\n"))
       org-cycle-separator-lines 1
       org-log-done 'time
@@ -46,7 +48,7 @@
                           "CANCELLED(c)" "|"
                           "IMPLEMENTED(m)"))
       org-agenda-files
-      (list "/data/org/general.org" "/data/org/lrde.org" "/data/org/office.org" "/data/org/vamana.org" "/data/org/notes.org")
+      (list "/data/dotfiles/org/general.org" "/data/dotfiles/org/lrde.org" "/data/dotfiles/org/office.org" "/data/dotfiles/org/vamana.org" "/data/dotfiles/org/notes.org" "/data/dotfiles/org/documentation.org" "/data/dotfiles/org/notes.org" )
       ;;     org-priority-faces ';; ((65 :foreground "red" :background "yellow" :weight 'bold )
       ;;  (66 :foreground "black" :background "orange" :weight 'bold)
       ;;  (67 :foreground "black" :background "green" :weight 'bold)

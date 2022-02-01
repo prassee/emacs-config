@@ -51,15 +51,14 @@
                        treemacs-directory-collapsed-face
                        treemacs-file-face
                        treemacs-tags-face))
-              (set-face-attribute face nil :family "ubuntu" :height 120 ))
-            ))
+              (set-face-attribute face nil :family "Ubuntu" :height 120 ))))
 
 (defface custom-line-highlight
   '((t (:background "blue" :foreground "white" :extend t)))
   "")
 
 (add-hook 'treemacs-mode-hook
-          (defun channge-hl-line-mode ()
+          (defun change-hl-line-mode ()
             (setq-local hl-line-face 'custom-line-highlight)
             (overlay-put hl-line-overlay 'face hl-line-face)
             (treemacs--setup-icon-background-colors)))
@@ -127,11 +126,7 @@
 
 (mood-line-mode)
 
-(persp-mode)
-
 
 (setq warning-minimum-level :emergency)
-
-;; (load-theme 'vscode-dark-plus t)
 
 (provide 'custom)
