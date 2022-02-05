@@ -238,6 +238,8 @@
 
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
+(use-package vc-msg :after magit :ensure t)
+
 ;; (use-package lsp-treemacs)
 
 (use-package modus-themes
