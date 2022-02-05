@@ -4,7 +4,7 @@
 ;; (global-set-key (kbd "C-x 3") 'split-window-horizontally)
 
 (global-set-key (kbd "<f5>") 'revert-buffer)
-;; (global-set-key (kbd "<f8>") 'treemacs)
+(global-set-key (kbd "<f8>") 'treemacs)
 (global-set-key (kbd "<f9>") 'treemacs-switch-workspace)
 
 ;; (global-set-key (kbd "<f9>") 'projectile-persp-switch-project)

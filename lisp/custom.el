@@ -14,6 +14,8 @@
 (global-hl-line-mode 1)
 (tooltip-mode 1)
 (ivy-rich-mode 1)
+(mood-line-mode 1)
+
 
 (setq file-name-handler-alist nil)
 
@@ -25,15 +27,17 @@
 
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
 
-;; (defun my-minibuffer-setup-hook ()
-;;   (setq gc-cons-threshold most-positive-fixnum))
-
-;; (defun my-minibuffer-exit-hook ()
-;;   (setq gc-cons-threshold 100000000))
+(defface custom-line-highlight
+  '((t (:background "blue" :foreground "white" :extend t)))
+  "")
 
 
-;; (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
-;; (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+(add-hook 'treemacs-mode-hook
+          (defun change-hl-line-mode ()
+            (setq-local hl-line-face 'custom-line-highlight)
+            (overlay-put hl-line-overlay 'face hl-line-face)
+            (treemacs--setup-icon-background-colors)))
+
 
 (add-hook 'treemacs-mode-hook
           (lambda()
@@ -51,17 +55,10 @@
                        treemacs-directory-collapsed-face
                        treemacs-file-face
                        treemacs-tags-face))
-              (set-face-attribute face nil :family "Ubuntu" :height 120 ))))
+              (set-face-attribute face nil :family "ubuntu" :height 120))))
 
-(defface custom-line-highlight
-  '((t (:background "blue" :foreground "white" :extend t)))
-  "")
 
-(add-hook 'treemacs-mode-hook
-          (defun change-hl-line-mode ()
-            (setq-local hl-line-face 'custom-line-highlight)
-            (overlay-put hl-line-overlay 'face hl-line-face)
-            (treemacs--setup-icon-background-colors)))
+
 
 ;; (add-hook 'after-init-hook 'org-agenda-list)
 
@@ -71,6 +68,7 @@
 ;;   ;; :project/:workspace/:file
 ;;   (setq lsp-modeline-diagnostics-scope :workspace)
 ;;   )
+
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
@@ -124,9 +122,24 @@
                           (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(mood-line-mode)
-
-
 (setq warning-minimum-level :emergency)
+;; 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ivy-current-match ((t (:background "black" :foreground "green"))))
+ '(ivy-highlight-face ((t (:background "black" :foreground "green"))))
+ '(markdown-header-delimiter-face ((t (:foreground "mediumpurple"))))
+ '(markdown-header-face-1
+   ((t (:foreground "violet" :weight bold :height 1.0))))
+ '(markdown-header-face-2
+   ((t (:foreground "lightslateblue" :weight bold :height 1.0))))
+ '(markdown-header-face-3
+   ((t (:foreground "mediumpurple1" :weight bold :height 1.0))))
+ '(markdown-link-face ((t (:background "#0e1014" :foreground "#bd93f9"))))
+ '(markdown-list-face ((t (:foreground "mediumpurple"))))
+ '(markdown-pre-face ((t (:foreground "#bd98fe")))))
 
 (provide 'custom)

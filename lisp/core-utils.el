@@ -173,6 +173,7 @@
                   treemacs-deferred-git-apply-delay      0.5
                   treemacs-directory-name-transformer #'identity treemacs-display-in-side-window        t
                   treemacs-eldoc-display t
+                  treemacs-text-scale -2
                   treemacs-file-event-delay              5000
                   treemacs-file-extension-regex
                   treemacs-last-period-regex-value treemacs-file-follow-delay             0.2
@@ -212,6 +213,7 @@
             ;; using a Hi-DPI display, uncomment this to double the icon size.
             (treemacs-resize-icons 20)
             (treemacs-follow-mode t)
+            
             (treemacs-filewatch-mode t)
             (treemacs-fringe-indicator-mode t)
             (pcase (cons
