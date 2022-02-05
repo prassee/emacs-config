@@ -4,21 +4,15 @@
 (set-keyboard-coding-system 'utf-8)
 ;; mac specific
 
-(set-face-attribute 'default nil
-                    :family "PragmataPro Liga"
-                    :height 180
-                    :weight 'normal
-                    :width 'normal)
-
 ;; BetterGC
 (defvar better-gc-cons-threshold 134217728 ; 64mb
   "The default value to use for `gc-cons-threshold'.
 If you experience freezing, decrease this.  If you experience stuttering, increase this.")
 
 (add-hook 'emacs-startup-hook
-          (lambda () (setq gc-cons-threshold better-gc-cons-threshold)))
-
-(setq gc-cons-threshold 50000000)
+          (lambda () (setq gc-cons-threshold better-gc-cons-threshold))
+          (setq gc-cons-threshold 50000000)
+          )
 
 ;; BetterGC
 
@@ -134,6 +128,12 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 ;; disable bold face across after loading everything
 (set-face-bold-p 'bold nil)
+
+(set-face-attribute 'default nil
+                    :family "PragmataPro Liga"
+                    :height 182
+                    :weight 'normal
+                    :width 'normal)
 
 (mapc
  (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil))
