@@ -17,6 +17,9 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold better-gc-cons-threshold)))
+
+(setq gc-cons-threshold 50000000)
+
 ;; BetterGC
 
 ;; AutoGC
