@@ -205,7 +205,9 @@
                   treemacs-tag-follow-delay 1.5
                   treemacs-user-mode-line-format 'none
                   treemacs-user-header-line-format nil
-                  treemacs-width                         20
+                  treemacs-width                         25
+                  treemacs-fringe-indicator-mode 'always
+                  treemacs-indent-guide-style 'line 
                   treemacs-width-is-initially-locked       nil
                   treemacs-workspace-switch-cleanup 'files)
 
@@ -213,8 +215,8 @@
             ;; using a Hi-DPI display, uncomment this to double the icon size.
             (treemacs-resize-icons 20)
             (treemacs-follow-mode t)
-            
-            (treemacs-filewatch-mode t)
+            (treemacs-indent-guide-mode t)
+            ;; (treemacs-filewatch-mode t) 
             (treemacs-fringe-indicator-mode t)
             (pcase (cons
                     (not (null (executable-find "git")))

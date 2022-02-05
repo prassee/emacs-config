@@ -28,7 +28,7 @@
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
 
 (defface custom-line-highlight
-  '((t (:background "blue" :foreground "white" :extend t)))
+  '((t (:background "#181868" :foreground "white" :extend t)))
   "")
 
 
@@ -129,8 +129,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ivy-current-match ((t (:background "black" :foreground "green"))))
- '(ivy-highlight-face ((t (:background "black" :foreground "green"))))
+ '(ivy-current-match ((t (:background "#181868" :foreground "white"))))
+ '(ivy-highlight-face ((t (:background "#181868" :foreground "green"))))
  '(markdown-header-delimiter-face ((t (:foreground "mediumpurple"))))
  '(markdown-header-face-1
    ((t (:foreground "violet" :weight bold :height 1.0))))
