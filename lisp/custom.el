@@ -57,9 +57,6 @@
                        treemacs-tags-face))
               (set-face-attribute face nil :family "ubuntu" :height 120))))
 
-
-
-
 ;; (add-hook 'after-init-hook 'org-agenda-list)
 
 ;; (with-eval-after-load 'lsp-mode
