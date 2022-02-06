@@ -11,8 +11,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold better-gc-cons-threshold))
-          (setq gc-cons-threshold 50000000)
-          )
+          (setq gc-cons-threshold 50000000))
 
 ;; BetterGC
 
@@ -126,14 +125,14 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (load "custom")
 
-;; disable bold face across after loading everything
-(set-face-bold-p 'bold nil)
-
 (set-face-attribute 'default nil
                     :family "PragmataPro Liga"
-                    :height 182
+                    :height 196
                     :weight 'normal
-                    :width 'normal)
+                    :width  'normal)
+
+;; disable bold face across after loading everything
+(set-face-bold-p 'bold nil)
 
 (mapc
  (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil))
@@ -144,4 +143,5 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (setq custom-file (concat user-emacs-directory "temp.el"))
 
 (load-file "~/.emacs.d/temp.el")
+
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)

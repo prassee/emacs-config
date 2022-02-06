@@ -173,7 +173,7 @@
                   treemacs-deferred-git-apply-delay      0.5
                   treemacs-directory-name-transformer #'identity treemacs-display-in-side-window        t
                   treemacs-eldoc-display t
-                  treemacs-text-scale -2
+                  treemacs-text-scale -1
                   treemacs-file-event-delay              5000
                   treemacs-file-extension-regex
                   treemacs-last-period-regex-value treemacs-file-follow-delay             0.2
