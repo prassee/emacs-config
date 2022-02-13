@@ -173,7 +173,7 @@
                   treemacs-deferred-git-apply-delay      0.5
                   treemacs-directory-name-transformer #'identity treemacs-display-in-side-window        t
                   treemacs-eldoc-display t
-                  treemacs-text-scale -1
+                  treemacs-text-scale -2
                   treemacs-file-event-delay              5000
                   treemacs-file-extension-regex
                   treemacs-last-period-regex-value treemacs-file-follow-delay             0.2
@@ -207,16 +207,16 @@
                   treemacs-user-header-line-format nil
                   treemacs-width                         25
                   treemacs-fringe-indicator-mode 'always
-                  treemacs-indent-guide-style 'line 
+                  treemacs-indent-guide-style 'line
                   treemacs-width-is-initially-locked       nil
                   treemacs-workspace-switch-cleanup 'files)
 
             ;; The default width and height of the icons is 22 pixels. If you are
             ;; using a Hi-DPI display, uncomment this to double the icon size.
-            (treemacs-resize-icons 20)
+            (treemacs-resize-icons 12)
             (treemacs-follow-mode t)
             (treemacs-indent-guide-mode t)
-            ;; (treemacs-filewatch-mode t) 
+            ;; (treemacs-filewatch-mode t)
             (treemacs-fringe-indicator-mode t)
             (pcase (cons
                     (not (null (executable-find "git")))
@@ -233,26 +233,23 @@
               ("C-x t C-t" . treemacs-find-file)
               ("C-x t M-t" . treemacs-find-tag)))
 
-
 (use-package treemacs-projectile :after treemacs projectile :ensure t)
 
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
-;; (use-package vc-msg :after magit :ensure t)
-
-(use-package blamer
-  :ensure t
-  :defer 20
-  :custom
-  (blamer-idle-time 0.3)
-  (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
-                    :background nil
-                    :height 140
-                    :italic t)))
-  :config
-  (global-blamer-mode 1))
+;; (use-package blamer
+;;   :ensure t
+;;   :defer 20
+;;   :custom
+;;   (blamer-idle-time 0.3)
+;;   (blamer-min-offset 70)
+;;   :custom-face
+;;   (blamer-face ((t :foreground "#7a88cf"
+;;                     :background nil
+;;                     :height 140
+;;                     :italic t)))
+;;   :config
+;;   (global-blamer-mode 1))
 
 ;; (use-package lsp-treemacs)
 
@@ -287,24 +284,33 @@
         modus-themes-paren-match
         '(bold intense)
 
-        modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
+        modus-themes-org-blocks 'tinted-background ; {nil,'gray-background,'tinted-background}
 
         modus-themes-org-agenda ; this is an alist: read the manual or its doc string
-        '((header-block . (variable-pitch 1.3))
-          (header-date . (grayscale workaholic bold-today 1.1))
+        '((header-block . (variable-pitch 1.5))
+          (header-date . (grayscale workaholic bold-today 1.3))
           (event . (accented varied))
           (scheduled . uniform)
           (habit . traffic-light))
 
         modus-themes-headings ; this is an alist: read the manual or its doc string
-        '((1 . (overline background variable-pitch 1.3))
-          (2 . (rainbow overline 1.1))
+        '((1 . (overline background variable-pitch 1.5))
+          (2 . (rainbow overline 1.5))
           (t . (semibold))))
 
   ;; Load the theme files before enabling a theme
   (modus-themes-load-themes)
-  :config ;; Load the theme of your choice:
-  (modus-themes-load-vivendi))
+  ;; :config ;; Load the theme of your choice:
+  ;; (modus-themes-load-vivendi)
+  )
+
+(use-package solaire-mode :ensure t :config (solaire-global-mode +1))
+
+(use-package vscode-dark-plus-theme
+  :config (setq vscode-dark-plus-box-org-todo nil)
+  (setq vscode-dark-plus-scale-org-faces nil)
+  (setq vscode-dark-plus-invert-hl-todo nil))
+
 
 (use-package mood-line)
 
@@ -316,6 +322,10 @@
          mermaid-mmdc-location "/data/cellar/mermaid-cli/node_modules/.bin/mmdc"
          mermaid-tmp-dir "/media/saipranav/6664-6532/mermaidDiagrams/")
   :mode "\\.mermaid\\'")
+
+(use-package ob-mermaid
+  :config (setq ob-mermaid-cli-path "/data/cellar/mermaid-cli/node_modules/.bin/mmdc")
+  )
 
 (use-package good-scroll :config (good-scroll-mode 1))
 

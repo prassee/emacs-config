@@ -25,6 +25,8 @@
 
 (setq markdown-hr-display-char  nil)
 
+(setq-default line-spacing 0)
+
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
 
 (defface custom-line-highlight
@@ -65,7 +67,6 @@
 ;;   ;; :project/:workspace/:file
 ;;   (setq lsp-modeline-diagnostics-scope :workspace)
 ;;   )
-
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
@@ -120,6 +121,9 @@
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
 (setq warning-minimum-level :emergency)
+
+(load-theme 'vscode-dark-plus t)
+
 ;; 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -137,6 +141,15 @@
    ((t (:foreground "mediumpurple1" :weight bold :height 1.0))))
  '(markdown-link-face ((t (:background "#0e1014" :foreground "#bd93f9"))))
  '(markdown-list-face ((t (:foreground "mediumpurple"))))
- '(markdown-pre-face ((t (:foreground "#bd98fe")))))
+ '(markdown-pre-face ((t (:foreground "#bd98fe"))))
+ )
+
+;; (load-theme 'modus-vivendi t)
+
+(set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 180)
+
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+
 
 (provide 'custom)

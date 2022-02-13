@@ -132,11 +132,11 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
                     :width  'normal)
 
 ;; disable bold face across after loading everything
-(set-face-bold-p 'bold nil)
+;; (set-face-bold-p 'bold nil)
 
-(mapc
- (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil))
- (face-list))
+;; (mapc
+;;  (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil))
+;;  (face-list))
 
 (shell-command "truncate -s 0 ~/.emacs.d/temp.el")
 

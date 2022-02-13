@@ -25,7 +25,7 @@
 
         ("n" "Quick Notes" entry
          (file "/data/dotfiles/org/notes.org")
-         "* TODO %^{Capture a note about ? } %?" :empty-lines 2)
+         "* TODO %^{Capture a note about ? }  %^G \n %?" :empty-lines 2)
 
          ("d" "Quick Document" entry
          (file "/data/dotfiles/org/documentation.org")
@@ -112,5 +112,12 @@
         (todo . " %i %e ")
         (tags . " %i %e ")
         (search . " %i %e "))))
+
+(setq org-startup-indented t
+          org-pretty-entities t
+          org-hide-emphasis-markers t
+          org-startup-with-inline-images t
+          ;; org-image-actual-width '(300)
+          )
 
 (provide 'org-config)
