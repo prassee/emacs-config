@@ -33,6 +33,8 @@
   '((t (:background "#181868" :foreground "white" :extend t)))
   "")
 
+(add-hook 'java-mode-hook 'yas-minor-mode)
+(add-hook 'java-mode-hook 'lsp-java-lens-mode)
 
 (add-hook 'treemacs-mode-hook
           (defun change-hl-line-mode ()
@@ -122,7 +124,6 @@
 
 (setq warning-minimum-level :emergency)
 
-(load-theme 'vscode-dark-plus t)
 
 ;; 
 (custom-set-faces
@@ -145,6 +146,7 @@
  )
 
 ;; (load-theme 'modus-vivendi t)
+(load-theme 'vscode-dark-plus t)
 
 (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 180)
 
