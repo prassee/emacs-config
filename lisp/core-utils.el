@@ -304,8 +304,6 @@
   ;; (modus-themes-load-vivendi)
   )
 
-(use-package solaire-mode :ensure t :config (solaire-global-mode +1))
-
 (use-package vscode-dark-plus-theme
   :config (setq vscode-dark-plus-box-org-todo nil)
   (setq vscode-dark-plus-scale-org-faces nil)

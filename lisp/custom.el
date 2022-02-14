@@ -15,7 +15,7 @@
 (tooltip-mode 1)
 (ivy-rich-mode 1)
 (mood-line-mode 1)
-
+;; (auto-dim-other-buffers-mode 1)
 
 (setq file-name-handler-alist nil)
 
