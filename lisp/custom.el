@@ -148,7 +148,9 @@
 ;; (load-theme 'modus-vivendi t)
 (load-theme 'vscode-dark-plus t)
 
-(set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 180)
+;; (set-face-attribute 'default nil :family "PragmataPro Liga" :height 190)
+;; (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 190)
+;; (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 180)
 
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)

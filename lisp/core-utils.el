@@ -327,4 +327,13 @@
 
 (use-package good-scroll :config (good-scroll-mode 1))
 
+ (use-package mixed-pitch
+    :hook
+    (org-mode . mixed-pitch-mode)
+    :config
+    (set-face-attribute 'default nil :family "PragmataPro Liga" :height 196)
+    (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 196)
+    (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 190)
+    )
+
 (provide 'core-utils)
