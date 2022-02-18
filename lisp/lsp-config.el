@@ -296,6 +296,7 @@
   :ensure t
   :hook (python-mode . (lambda () (require 'lsp-pyright) (lsp))))  ; or lsp-deferred
 
+
 (use-package
   rust-mode
   :hook (rust-mode . lsp)

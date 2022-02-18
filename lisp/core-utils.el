@@ -234,75 +234,23 @@
               ("C-x t M-t" . treemacs-find-tag)))
 
 (use-package treemacs-projectile :after treemacs projectile :ensure t)
-
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
-;; (use-package blamer
-;;   :ensure t
-;;   :defer 20
-;;   :custom
-;;   (blamer-idle-time 0.3)
-;;   (blamer-min-offset 70)
-;;   :custom-face
-;;   (blamer-face ((t :foreground "#7a88cf"
-;;                     :background nil
-;;                     :height 140
-;;                     :italic t)))
-;;   :config
-;;   (global-blamer-mode 1))
-
-;; (use-package lsp-treemacs)
-
-(use-package modus-themes
-  :ensure :init
-  ;; Add all your customizations prior to loading the themes
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs nil
-        modus-themes-region
-        '(bg-only no-extend)
-        ;; Options for `modus-themes-mode-line' are either nil, or a list
-        ;; that can combine any of `3d' OR `moody', `borderless',
-        ;; `accented', and a natural number for extra padding
-        modus-themes-mode-line
-        '(4 accented borderless)
-
-        ;; Options for `modus-themes-markup' are either nil, or a list
-        ;; that can combine any of `bold', `italic', `background',
-        ;; `intense'.
-        modus-themes-markup
-        '(bold italic intense background)
-
-        ;; Options for `modus-themes-hl-line' are either nil (the default),
-        ;; or a list of properties that may include any of those symbols:
-        ;; `accented', `underline', `intense'
-        modus-themes-hl-line
-        '(underline accented)
-
-        ;; Options for `modus-themes-paren-match' are either nil (the
-        ;; default), or a list of properties that may include any of those
-        ;; symbols: `bold', `intense', `underline'
-        modus-themes-paren-match
-        '(bold intense)
-
-        modus-themes-org-blocks 'tinted-background ; {nil,'gray-background,'tinted-background}
-
-        modus-themes-org-agenda ; this is an alist: read the manual or its doc string
-        '((header-block . (variable-pitch 1.5))
-          (header-date . (grayscale workaholic bold-today 1.3))
-          (event . (accented varied))
-          (scheduled . uniform)
-          (habit . traffic-light))
-
-        modus-themes-headings ; this is an alist: read the manual or its doc string
-        '((1 . (overline background variable-pitch 1.5))
-          (2 . (rainbow overline 1.5))
-          (t . (semibold))))
-
-  ;; Load the theme files before enabling a theme
-  (modus-themes-load-themes)
-  ;; :config ;; Load the theme of your choice:
-  ;; (modus-themes-load-vivendi)
+(use-package blamer
+  :ensure t
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "violet" ;; "#7a88cf"
+                    :family "Ubuntu"
+                    :background nil
+                    :height 150)))
+  ;; :config
+  ;; (global-blamer-mode 1)
   )
+
 
 (use-package vscode-dark-plus-theme
   :config (setq vscode-dark-plus-box-org-todo nil)
@@ -335,5 +283,7 @@
     (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 196)
     (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 190)
     )
+
+(use-package sql-clickhouse  )
 
 (provide 'core-utils)
