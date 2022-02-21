@@ -17,7 +17,7 @@
   (lsp-file-watch-threshold 2000)
   (read-process-output-max (* 1024 1024))
   (lsp-json-use-lists t)
-  (lsp-signature-doc-lines 2)
+  (lsp-signature-doc-lines 4)
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-completion-provider :capf)
   (lsp-modeline-diagnostics-mode t)
@@ -29,6 +29,7 @@
   :hook ((python-mode go-mode julia-mode rust-mode java-mode
                       js-mode js2-mode typescript-mode web-mode)
          . lsp))
+
 
 (use-package
   lsp-ui
@@ -44,7 +45,7 @@
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-show-with-cursor t)
   (lsp-ui-doc-enhanced-markdown nil)
-  (lsp-ui-doc-use-webkit t)
+  (lsp-ui-doc-use-webkit nil)
   (lsp-ui-doc-border   "orange")
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-ui-doc-include-signature t)
