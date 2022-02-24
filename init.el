@@ -46,11 +46,11 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
               visual-fill-column-width 100
               word-wrap t
               blink-cursor-mode t
-              blink-cursor-interval 0.2
+              blink-cursor-interval 0.3
               cursor-type
               '(bar . 2)
               right-fringe-width 0
-              left-fringe-width  3
+              left-fringe-width  2
               frame-title-format "%f")
 
 

@@ -45,7 +45,7 @@
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-show-with-cursor t)
   (lsp-ui-doc-enhanced-markdown nil)
-  (lsp-ui-doc-use-webkit nil)
+  (lsp-ui-doc-use-webkit t)
   (lsp-ui-doc-border   "orange")
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-ui-doc-include-signature t)
