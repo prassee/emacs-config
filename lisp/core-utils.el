@@ -59,6 +59,16 @@
   :config (setq ivy-rich-mode 1)
   (ivy-set-display-transformer 'ivy-switch-buffer-other-window 'ivy-rich-switch-buffer-transformer))
 
+
+(use-package all-the-icons
+  :if (display-graphic-p)
+  :config (setq all-the-icons-scale-factor 0.6))
+
+(use-package all-the-icons-ivy-rich
+  :after counsel-projectile
+  :init (all-the-icons-ivy-rich-mode 1)
+  :config (setq all-the-icons-ivy-rich-icon-size 0.6))
+
 (use-package smex)
 
 (use-package
@@ -144,10 +154,7 @@
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   (global-diff-hl-mode))
 
-(use-package all-the-icons)
-
 (use-package hl-line :ensure nil :hook (after-init . global-hl-line-mode))
-
 
 (use-package
   highlight-indent-guides
@@ -191,7 +198,7 @@
                   treemacs-persist-file
                   (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
                   treemacs-position                  'left
-                  treemacs-recenter-distance 0.1
+                  treemacs-recenter-distance 0.2
                   treemacs-recenter-after-file-follow    nil
                   treemacs-recenter-after-tag-follow nil
                   treemacs-recenter-after-project-jump 'always
@@ -205,7 +212,7 @@
                   treemacs-tag-follow-delay 1.5
                   treemacs-user-mode-line-format 'none
                   treemacs-user-header-line-format nil
-                  treemacs-width                         25
+                  treemacs-width                         20
                   treemacs-fringe-indicator-mode 'always
                   treemacs-indent-guide-style 'line
                   treemacs-width-is-initially-locked       nil
@@ -216,6 +223,7 @@
             (treemacs-resize-icons 12)
             (treemacs-follow-mode t)
             (treemacs-indent-guide-mode t)
+            (cfrs-border-width 2)
             ;; (treemacs-filewatch-mode t)
             (treemacs-fringe-indicator-mode t)
             (pcase (cons
@@ -236,27 +244,25 @@
 (use-package treemacs-projectile :after treemacs projectile :ensure t)
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
+
 (use-package blamer
-  :ensure t
-  :defer 20
-  :custom
-  (blamer-idle-time 0.3)
-  (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "violet" ;; "#7a88cf"
+  ;; :bind (("C-c g" . blamer-mode))
+  :custom-face (blamer-face
+                ((t :foreground "violet" ;; "#7a88cf"
                     :family "Ubuntu"
                     :background nil
                     :height 150)))
-  ;; :config
-  ;; (global-blamer-mode 1)
-  )
+  :config (setq blamer-idle-time 0.05)
+  (setq blamer-author-formatter "%s ")
+  (setq blamer-datetime-formatter "[%s]")
+  (setq blamer-commit-formatter " ● %s")
+  (setq blamer-max-commit-message-length 100)
+  (setq blamer-min-offset 70))
 
-
-(use-package vscode-dark-plus-theme
-  :config (setq vscode-dark-plus-box-org-todo nil)
-  (setq vscode-dark-plus-scale-org-faces nil)
-  (setq vscode-dark-plus-invert-hl-todo nil))
-
+;; (use-package vscode-dark-plus-theme
+;;   :config (setq vscode-dark-plus-box-org-todo nil)
+;;   (setq vscode-dark-plus-scale-org-faces nil)
+;;   (setq vscode-dark-plus-invert-hl-todo nil))
 
 (use-package mood-line)
 
@@ -275,14 +281,11 @@
 
 (use-package good-scroll :config (good-scroll-mode 1))
 
- (use-package mixed-pitch
-    :hook
-    (org-mode . mixed-pitch-mode)
-    :config
-    (set-face-attribute 'default nil :family "PragmataPro Liga" :height 196)
-    (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 196)
-    (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 190)
-    )
+(use-package mixed-pitch
+  :hook (org-mode . mixed-pitch-mode)
+  :config (set-face-attribute 'default nil :family "PragmataPro Liga" :height 196)
+  (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 196)
+  (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 190))
 
 (use-package sql-clickhouse  )
 
