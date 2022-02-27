@@ -194,7 +194,7 @@
                   treemacs-move-forward-on-expand        nil
                   treemacs-no-png-images t
                   treemacs-no-delete-other-windows       t
-                  treemacs-project-follow-cleanup nil
+                  treemacs-project-follow-cleanup t
                   treemacs-persist-file
                   (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
                   treemacs-position                  'left
@@ -216,6 +216,7 @@
                   treemacs-fringe-indicator-mode 'always
                   treemacs-indent-guide-style 'line
                   treemacs-width-is-initially-locked       nil
+                  treemacs-hide-gitignored-files-mode t
                   treemacs-workspace-switch-cleanup 'files)
 
             ;; The default width and height of the icons is 22 pixels. If you are
@@ -226,6 +227,7 @@
             (cfrs-border-width 2)
             ;; (treemacs-filewatch-mode t)
             (treemacs-fringe-indicator-mode t)
+            (treemacs-hide-gitignored-files-mode t)
             (pcase (cons
                     (not (null (executable-find "git")))
                     (not (null treemacs-python-executable)))
@@ -275,8 +277,7 @@
 
 (use-package mixed-pitch
   :hook (org-mode . mixed-pitch-mode)
-  :config
-  (set-face-attribute 'default nil :family "JetBrains Mono" :height 140)
+  :config (set-face-attribute 'default nil :family "JetBrains Mono" :height 140)
   (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 140)
   (set-face-attribute 'variable-pitch nil :family "Jetbrains Mono" :height 190))
 

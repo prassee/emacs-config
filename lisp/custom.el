@@ -15,6 +15,7 @@
 (tooltip-mode 1)
 (ivy-rich-mode 1)
 (mood-line-mode 1)
+(treemacs-hide-gitignored-files-mode 1)
 (all-the-icons-ivy-rich-mode 1)
 ;; (auto-dim-other-buffers-mode 1)
 
@@ -34,7 +35,7 @@
 (setq eshell-toggle-size-fraction 3)
 (setq eshell-toggle-use-projectile-root nil)
 (setq eshell-toggle-run-command nil)
-(setq eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+;; (setq eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
 
 (setq file-name-handler-alist nil)
 
