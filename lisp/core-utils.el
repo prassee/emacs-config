@@ -244,29 +244,21 @@
 (use-package treemacs-projectile :after treemacs projectile :ensure t)
 (use-package treemacs-magit :after treemacs magit :ensure t)
 
-
 (use-package blamer
   ;; :bind (("C-c g" . blamer-mode))
   :custom-face (blamer-face
                 ((t :foreground "violet" ;; "#7a88cf"
-                    :family "Ubuntu"
+                    :family "Jetbrains Mono"
                     :background nil
                     :height 150)))
   :config (setq blamer-idle-time 0.05)
-  (setq blamer-author-formatter "%s ")
+  (setq blamer-author-formatter " %s ")
   (setq blamer-datetime-formatter "[%s]")
   (setq blamer-commit-formatter " ● %s")
   (setq blamer-max-commit-message-length 100)
   (setq blamer-min-offset 70))
 
-;; (use-package vscode-dark-plus-theme
-;;   :config (setq vscode-dark-plus-box-org-todo nil)
-;;   (setq vscode-dark-plus-scale-org-faces nil)
-;;   (setq vscode-dark-plus-invert-hl-todo nil))
-
 (use-package mood-line)
-
-(use-package sqlformat)
 
 (use-package mermaid-mode
   :ensure t
@@ -283,10 +275,11 @@
 
 (use-package mixed-pitch
   :hook (org-mode . mixed-pitch-mode)
-  :config (set-face-attribute 'default nil :family "PragmataPro Liga" :height 196)
-  (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 196)
-  (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 190))
-
-(use-package sql-clickhouse  )
+  :config
+  (set-face-attribute 'default nil :family "JetBrains Mono" :height 140)
+  (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 140)
+  ;; (set-face-attribute 'default nil :family "cacadia code" :height 140)
+  ;; (set-face-attribute 'fixed-pitch nil :family "cacadia code" :height 140)
+  (set-face-attribute 'variable-pitch nil :family "Jetbrains Mono" :height 190))
 
 (provide 'core-utils)

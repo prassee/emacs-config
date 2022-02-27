@@ -2,6 +2,8 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)                      
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 ;; mac specific
 
 ;; BetterGC
@@ -124,20 +126,15 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (load "elfmt")
 
+(load "eshell-toggle")
+
 (load "custom")
 
 (set-face-attribute 'default nil
-                    :family "PragmataPro Liga"
-                    :height 196
+                    :family "JetBrains Mono"
+                    :height 140
                     :weight 'normal
                     :width  'normal)
-
-;; disable bold face across after loading everything
-;; (set-face-bold-p 'bold nil)
-
-;; (mapc
-;;  (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil))
-;;  (face-list))
 
 (shell-command "truncate -s 0 ~/.emacs.d/temp.el")
 

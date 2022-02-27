@@ -30,6 +30,8 @@
 
 (global-set-key (kbd "C-o") 'counsel-imenu)
 
+(global-set-key (kbd "s-`") 'eshell-toggle)
+
 (global-set-key (kbd "C-c d") 'kill-whole-line)
 (global-set-key (kbd "<C-up>") 'shrink-window)
 (global-set-key (kbd "<C-down>") 'enlarge-window)
@@ -51,6 +53,8 @@
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "<C-mouse-4>"))
+(global-unset-key (kbd "<C-mouse-5>"))
 
 ;; (define-key python-mode-map (kbd "s-l ==") 'python-black-buffer)
 

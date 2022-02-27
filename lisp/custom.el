@@ -18,6 +18,11 @@
 (all-the-icons-ivy-rich-mode 1)
 ;; (auto-dim-other-buffers-mode 1)
 
+(setq eshell-toggle-size-fraction 3)
+(setq eshell-toggle-use-projectile-root nil)
+(setq eshell-toggle-run-command nil)
+(setq eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+
 (setq file-name-handler-alist nil)
 
 (setq ivy-format-function 'ivy-format-function-line)
@@ -150,13 +155,16 @@
 (load-theme 'modus-vivendi t)
 ;; (load-theme 'vscode-dark-plus t)
 
+;; disable bold face across after loading everything
+;; (set-face-bold-p 'bold nil)
 
-;; (set-face-attribute 'default nil :family "PragmataPro Liga" :height 190)
-;; (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 190)
-;; (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height 180)
-
-(add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+;; (add-hook 'org-mode-hook
+;;           (lambda()
+;;             (display-line-numbers-mode -1)
+;;             (set-face-attribute default nil :family "ubuntu" :height 120)))
+
 
 (defun sh-send-line-or-region (&optional step)
   (interactive ())
@@ -175,7 +183,8 @@
     (with-current-buffer pbuff
       (goto-char (process-mark proc))
       (insert command)
-      (move-marker (process-mark proc) (point))) ;;pop-to-buffer does not work with save-current-buffer -- bug?
+      (move-marker (process-mark proc) (point))
+      (setq comint-scroll-to-bottom-on-output t)) ;;pop-to-buffer does not work with save-current-buffer -- bug?
     (process-send-string  proc command)
     (display-buffer (process-buffer proc) t)
     (when step (goto-char max) (next-line))))
@@ -183,8 +192,12 @@
 (defun sh-send-line-or-region-and-step ()
   (interactive)
   (sh-send-line-or-region t))
+
 (defun sh-switch-to-process-buffer ()
   (interactive)
   (pop-to-buffer (process-buffer (get-process "shell")) t))
+
+(when (and (executable-find "fish") (require 'fish-completion nil t))
+  (global-fish-completion-mode))
 
 (provide 'custom)
