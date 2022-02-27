@@ -271,15 +271,13 @@
   :config (setq ob-mermaid-cli-path "/data/cellar/mermaid-cli/node_modules/.bin/mmdc")
   )
 
-(use-package good-scroll :config (good-scroll-mode 1))
+;; (use-package good-scroll :config (good-scroll-mode 1))
 
 (use-package mixed-pitch
   :hook (org-mode . mixed-pitch-mode)
   :config
   (set-face-attribute 'default nil :family "JetBrains Mono" :height 140)
   (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 140)
-  ;; (set-face-attribute 'default nil :family "cacadia code" :height 140)
-  ;; (set-face-attribute 'fixed-pitch nil :family "cacadia code" :height 140)
   (set-face-attribute 'variable-pitch nil :family "Jetbrains Mono" :height 190))
 
 (provide 'core-utils)
