@@ -7,7 +7,8 @@
 (use-package
   flycheck
   :custom (flycheck-emacs-lisp-load-path 'inherit)
-  (flycheck-set-indication-mode 'left-fringe))
+  (flycheck-set-indication-mode 'left-fringe)
+  )
 
 (use-package lsp-mode
   :defer t
@@ -331,7 +332,10 @@
 
 (use-package lsp-julia
   :config (setq lsp-julia-default-environment "~/.julia/environments/v1.7")
-  (add-hook 'julia-mode-hook #'lsp))
+  (add-hook 'julia-mode-hook #'lsp)
+  (add-hook 'julia-mode-hook 'julia-repl-mode))
+
+(use-package julia-repl :after lsp-julia)
 
 (use-package dockerfile-mode)
 

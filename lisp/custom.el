@@ -18,7 +18,7 @@
 (treemacs-hide-gitignored-files-mode 1)
 (all-the-icons-ivy-rich-mode 1)
 ;; (auto-dim-other-buffers-mode 1)
-
+(setq comint-process-echoes t)
 (setq pixel-scroll-precision-large-scroll-height 40.0)
 (setq pixel-scroll-precision-interpolation-factor 30)
  ;; scroll one line at a time (less "jumpy" than defaults)
@@ -35,7 +35,7 @@
 (setq eshell-toggle-size-fraction 3)
 (setq eshell-toggle-use-projectile-root nil)
 (setq eshell-toggle-run-command nil)
-;; (setq eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+;; (setq eshell-toggle-init-function 'eshell-toggle-init-ansi-term)
 
 (setq file-name-handler-alist nil)
 
@@ -50,11 +50,14 @@
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
 
 (defface custom-line-highlight
-  '((t (:background "#181868" :foreground "white" :extend t)))
+  '((t (:background "#2a2a66" :foreground "#bfebe0" :extend t)))
   "")
 
 (add-hook 'java-mode-hook 'yas-minor-mode)
 (add-hook 'java-mode-hook 'lsp-java-lens-mode)
+
+(add-hook 'python-mode-hook 'code-cells-mode-maybe)
+(add-hook 'julia-mode-hook 'code-cells-mode-maybe)
 
 (add-hook 'treemacs-mode-hook
           (defun change-hl-line-mode ()
@@ -94,6 +97,13 @@
   ;; :project/:workspace/:file
   (setq lsp-modeline-diagnostics-scope :workspace)
   (setq lsp-modeline-code-actions-segments '(count icon name)))
+
+;; (with-eval-after-load 'code-cells
+;;   (let ((map code-cells-mode-map))
+;;     (define-key map (kbd "M-p") 'code-cells-backward-cell)
+;;     (define-key map (kbd "M-n") 'code-cells-forward-cell)
+;;     (define-key map (kbd "C-c C-c") 'code-cells-eval)
+;; ))
 
 ;; (with-eval-after-load 'flycheck
 ;;   (flycheck-pos-tip-mode))
@@ -234,7 +244,7 @@
       ;; of padding and NATNUM), and a floating point for the height of
       ;; the text relative to the base font size (or a cons cell of
       ;; height and FLOAT)
-      modus-themes-mode-line '(accented borderless (padding . 4) (height . 0.9))
+      modus-themes-mode-line '(accented borderless (padding . 2) (height . 1.1))
 
       ;; Same as above:
       ;; modus-themes-mode-line '(accented borderless 4 0.9)
@@ -317,6 +327,7 @@
       '((1 . (overline background variable-pitch 1.3))
         (2 . (rainbow overline 1.1))
         (t . (semibold))))
+
 
 (load-theme 'modus-vivendi t)
 

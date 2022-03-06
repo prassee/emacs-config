@@ -69,7 +69,7 @@
   :init (all-the-icons-ivy-rich-mode 1)
   :config (setq all-the-icons-ivy-rich-icon-size 0.6))
 
-(use-package smex)
+;; (use-package smex)
 
 (use-package
   counsel
@@ -260,7 +260,10 @@
   (setq blamer-max-commit-message-length 100)
   (setq blamer-min-offset 70))
 
-(use-package mood-line)
+(use-package mood-line
+  :config
+  (setq mood-line-show-cursor-point t)
+  )
 
 (use-package mermaid-mode
   :ensure t
