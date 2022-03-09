@@ -6,6 +6,7 @@
 (global-set-key (kbd "<f5>") 'revert-buffer)
 (global-set-key (kbd "<f8>") 'treemacs)
 (global-set-key (kbd "<f9>") 'treemacs-switch-workspace)
+(global-set-key (kbd "<f12>") 'shell-pop)
 
 ;; (global-set-key (kbd "<f9>") 'projectile-persp-switch-project)
 
