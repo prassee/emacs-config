@@ -22,18 +22,19 @@
 (global-set-key (kbd "C-c t") 'toggle-window-split)
 (global-set-key (kbd "C-c T") 'window-toggle-split-direction)
 
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-x C-s")  'swiper)
+
 (global-set-key (kbd "C-c l") 'lsp-format-buffer)
-(global-set-key (kbd "s-l fe") 'lsp-ui-flycheck-list)
+(global-set-key (kbd "s-l fe") 'lsp-treemacs-errors-list)
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x a") 'org-capture)
 (global-set-key (kbd "C-x 9") 'org-agenda)
 
-(global-set-key (kbd "C-o") 'counsel-imenu)
-
 (global-set-key (kbd "s-`") 'eshell-toggle)
+(global-set-key (kbd "C-d") 'kill-whole-line)
 
-(global-set-key (kbd "C-c d") 'kill-whole-line)
 (global-set-key (kbd "<C-up>") 'shrink-window)
 (global-set-key (kbd "<C-down>") 'enlarge-window)
 (global-set-key (kbd "<C-left>") 'shrink-window-horizontally)

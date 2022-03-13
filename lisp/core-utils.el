@@ -69,20 +69,19 @@
   :init (all-the-icons-ivy-rich-mode 1)
   :config (setq all-the-icons-ivy-rich-icon-size 0.6))
 
-;; (use-package smex)
+(use-package smex)
 
 (use-package
   counsel
   :after ivy
   :bind*                                ; load when pressed
   (("M-x"     . counsel-M-x)
-   ("C-s"     . swiper)
-   ("C-x C-b" . counsel-projectile-switch-to-buffer)
-   ("C-x C-f" . counsel-find-file)
+   ;; ("C-x C-s" . swiper)
    ("C-x C-r" . counsel-recentf)        ; search for recently edited
    ("C-c g"   . counsel-git)            ; search for files in git repo
    ("C-c j"   . counsel-git-grep)       ; search for regexp in git repo
-   ("C-c /"   . counsel-ag)             ; Use ag for regexp
+   ("C-c /"   . counsel-ag) ; Use ag for regexp
+   ("C-o"     . counsel-imenu)
    ("C-x l"   . counsel-locate)
    ("C-x C-f" . counsel-find-file)
    ("<f1> f"  . counsel-describe-function)
@@ -97,6 +96,7 @@
   counsel-projectile
   :bind*                                ; load when pressed
   (("C-x t" . counsel-projectile)
+   ("C-x C-b" . counsel-projectile-switch-to-buffer)
    ("C-x C-t" . counsel-projectile-find-file)))
 
 
@@ -245,14 +245,16 @@
 
 (use-package treemacs-projectile :after treemacs projectile :ensure t)
 (use-package treemacs-magit :after treemacs magit :ensure t)
+(use-package lsp-treemacs :after treemacs)
+
 
 (use-package blamer
   ;; :bind (("C-c g" . blamer-mode))
   :custom-face (blamer-face
                 ((t :foreground "violet" ;; "#7a88cf"
-                    :family "Jetbrains Mono"
+                    :family "PragmataPro Liga"
                     :background nil
-                    :height 150)))
+                    :height 196)))
   :config (setq blamer-idle-time 0.05)
   (setq blamer-author-formatter " %s ")
   (setq blamer-datetime-formatter "[%s]")
@@ -260,10 +262,9 @@
   (setq blamer-max-commit-message-length 100)
   (setq blamer-min-offset 70))
 
-(use-package mood-line
-  :config
+(use-package mood-line :config
   (setq mood-line-show-cursor-point t)
-  )
+  (setq mood-line-show-encoding-information nil))
 
 (use-package mermaid-mode
   :ensure t
@@ -280,8 +281,8 @@
 
 (use-package mixed-pitch
   :hook (org-mode . mixed-pitch-mode)
-  :config (set-face-attribute 'default nil :family "JetBrains Mono" :height 140)
-  (set-face-attribute 'fixed-pitch nil :family "JetBrains Mono" :height 140)
-  (set-face-attribute 'variable-pitch nil :family "Jetbrains Mono" :height 190))
+  :config (set-face-attribute 'default nil :family "PragmataPro Liga" :height 196)
+  (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 196)
+  (set-face-attribute 'variable-pitch nil :family "PragmataPro Liga" :height 196))
 
 (provide 'core-utils)

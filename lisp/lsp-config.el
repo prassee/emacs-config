@@ -47,7 +47,7 @@
   (lsp-ui-doc-show-with-cursor t)
   (lsp-ui-doc-enhanced-markdown nil)
   (lsp-ui-doc-use-webkit t)
-  (lsp-ui-doc-border   "orange")
+  (lsp-ui-doc-border "orange")
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-position 'top) ;; top, bottom, or at-point
@@ -60,11 +60,11 @@
   (lsp-ui-flycheck-list-position 'bottom)
   (lsp-ui-flycheck-live-reporting t)
   ;; lsp-ui-sideline
-  (lsp-ui-sideline-enable nil)
+  (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-ignore-duplicate t)
-  (lsp-ui-sideline-show-symbol t)
-  (lsp-ui-sideline-show-hover t)
-  (lsp-ui-sideline-show-diagnostics nil)
+  (lsp-ui-sideline-show-symbol nil)
+  (lsp-ui-sideline-show-hover nil)
+  (lsp-ui-sideline-show-diagnostics t)
   (lsp-ui-sideline-show-code-actions t)
   (lsp-ui-sideline-code-actions-prefix "")
   ;; lsp-ui-imenu
@@ -94,7 +94,7 @@
   :init (setq company-box-icons-alist 'company-box-icons-all-the-icons)
   :config (setq company-box-backends-colors nil)
   (setq company-box-show-single-candidate t)
-  (setq company-box-max-candidates 50)
+  ;; (setq company-box-max-candidates 50)
   (defun company-box-icons--elisp (candidate)
     (when (derived-mode-p 'emacs-lisp-mode)
       (let ((sym (intern candidate)))

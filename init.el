@@ -50,7 +50,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
               blink-cursor-mode t
               blink-cursor-interval 0.3
               cursor-type
-              '(bar . 2)
+              '(bar . 4)
               right-fringe-width 0
               left-fringe-width  2
               frame-title-format "%f")
@@ -131,8 +131,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (load "custom")
 
 (set-face-attribute 'default nil
-                    :family "JetBrains Mono"
-                    :height 140
+                    :family "PragmataPro Liga"
+                    :height 196
                     :weight 'normal
                     :width  'normal)
 
@@ -141,5 +141,3 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (setq custom-file (concat user-emacs-directory "temp.el"))
 
 (load-file "~/.emacs.d/temp.el")
-
-(customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
