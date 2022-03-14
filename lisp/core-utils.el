@@ -38,67 +38,9 @@
             (interactive)
             (magit-log-buffer-file t)))
 
-(use-package
-  ivy
-  :defer 0.1
-  :diminish ;; :bind (("C-c C-r" . ivy-resume)
-  ;;        ("C-x B" . ivy-switch-buffer-other-window))
-  :config (custom-set-faces
-           '(ivy-current-match ((t (:background "black" :foreground "cyan"))))
-           '(ivy-highlight-face ((t (:background "black" :foreground "green")))))
-  :custom (ivy-count-format "(%d/%d) ")
-  (ivy-use-virtual-buffers nil)
-  :config (ivy-mode))
 
-
-(use-package
-  ivy-rich
-  :after ivy
-  :custom (ivy-virtual-abbreviate 'full ivy-rich-switch-buffer-align-virtual-buffer t
-                                  ivy-rich-path-style 'abbrev)
-  :config (setq ivy-rich-mode 1)
-  (ivy-set-display-transformer 'ivy-switch-buffer-other-window 'ivy-rich-switch-buffer-transformer))
-
-
-(use-package all-the-icons
-  :if (display-graphic-p)
-  :config (setq all-the-icons-scale-factor 0.6))
-
-(use-package all-the-icons-ivy-rich
-  :after counsel-projectile
-  :init (all-the-icons-ivy-rich-mode 1)
-  :config (setq all-the-icons-ivy-rich-icon-size 0.6))
 
 ;; (use-package smex)
-
-(use-package
-  counsel
-  :after ivy
-  :bind*                                ; load when pressed
-  (("M-x"     . counsel-M-x)
-   ("C-s"     . swiper)
-   ("C-x C-b" . counsel-projectile-switch-to-buffer)
-   ("C-x C-f" . counsel-find-file)
-   ("C-x C-r" . counsel-recentf)        ; search for recently edited
-   ("C-c g"   . counsel-git)            ; search for files in git repo
-   ("C-c j"   . counsel-git-grep)       ; search for regexp in git repo
-   ("C-c /"   . counsel-ag)             ; Use ag for regexp
-   ("C-x l"   . counsel-locate)
-   ("C-x C-f" . counsel-find-file)
-   ("<f1> f"  . counsel-describe-function)
-   ("<f1> v"  . counsel-describe-variable)
-   ("<f1> l"  . counsel-find-library)
-   ("<f2> i"  . counsel-info-lookup-symbol)
-   ("<f2> u"  . counsel-unicode-char)
-   ;;("<f2> r" . ivy-resume) ; Resume last Ivy-based completion
-   ))
-
-(use-package
-  counsel-projectile
-  :bind*                                ; load when pressed
-  (("C-x t" . counsel-projectile)
-   ("C-x C-t" . counsel-projectile-find-file)))
-
 
 ;; move lines with ease
 (use-package

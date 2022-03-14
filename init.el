@@ -118,6 +118,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (load "core-utils")
 
+(load "mx-config")
+
 (load "lsp-config")
 
 (load "keybindings")

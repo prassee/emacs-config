@@ -13,10 +13,17 @@
 (global-display-line-numbers-mode 1)
 (global-hl-line-mode 1)
 (tooltip-mode 1)
-(ivy-rich-mode 1)
+;; (ivy-rich-mode 1)                       
 (mood-line-mode 1)
 (treemacs-hide-gitignored-files-mode 1)
-(all-the-icons-ivy-rich-mode 1)
+;; (all-the-icons-ivy-rich-mode 1)
+(global-auto-revert-mode 1)
+
+
+(selectrum-mode 1)
+(selectrum-prescient-mode 1)
+(prescient-persist-mode 1)
+
 ;; (auto-dim-other-buffers-mode 1)
 (setq comint-process-echoes t)
 (setq pixel-scroll-precision-large-scroll-height 40.0)
@@ -39,7 +46,7 @@
 
 (setq file-name-handler-alist nil)
 
-(setq ivy-format-function 'ivy-format-function-line)
+;; (setq ivy-format-function 'ivy-format-function-line)
 
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 

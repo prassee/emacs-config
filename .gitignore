@@ -1,8 +1,12 @@
-*
 .cache/
 elpa/
+eshell/
 auto-save-list/
 transient/
 workspace/
-!lisp/
-!init.el
+.*
+recentf
+smex-items
+temp.el
+*bookmarks*
+eln-cache/
