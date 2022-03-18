@@ -4,5 +4,4 @@ elpa/
 auto-save-list/
 transient/
 workspace/
-!lisp/
 !init.el
