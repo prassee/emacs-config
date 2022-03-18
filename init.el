@@ -126,7 +126,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (load "elfmt")
 
-(load "eshell-toggle")
+;; (load "eshell-toggle")
 
 (load "custom")
 

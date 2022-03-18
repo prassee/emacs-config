@@ -48,6 +48,8 @@
 
 (setq markdown-hr-display-char  nil)
 
+(setq sqlformat-command 'sqlfluff)
+
 (setq-default line-spacing 0)
 
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
@@ -225,6 +227,7 @@
   (global-fish-completion-mode))
 
 (load-theme 'leuven-dark t)
+
 
 (set-face-attribute 'mood-line-buffer-name nil :foreground "green")
 
