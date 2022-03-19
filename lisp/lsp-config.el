@@ -33,13 +33,7 @@
 
 (use-package
   lsp-ui
-  ;; :custom-face (lsp-ui-doc-background ((t
-  ;;                                       (:background nil))))
-  ;; (lsp-ui-doc-header ((t
-  ;;                      (:inherit (font-lock-string-face italic)))))
-  ;; :init
-  ;; (setq lsp-ui-doc-use-webkit t)
-  :custom ;; lsp-ui-doc
+  :custom 
   (lsp-ui-doc-enable t)
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)

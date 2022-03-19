@@ -283,4 +283,23 @@
   (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga" :height 196)
   (set-face-attribute 'variable-pitch nil :family "PragmataPro Liga" :height 196))
 
+(use-package org-superstar              ; supersedes `org-bullets'
+  :ensure :after org
+  :config (setq org-superstar-remove-leading-stars t)
+  (setq org-superstar-headline-bullets-list '(" ")) ;; '("🞛" "◉" "○" "▷")
+  (setq org-superstar-item-bullet-alist
+        '((?+ . ?•)
+          (?* . ?➤)
+          (?- . ?–)))
+  (org-superstar-mode -1))
+
+(use-package git-gutter
+  :custom (custom-set-variables
+           '(git-gutter:modified-sign "  ") ;; two space
+           '(git-gutter:added-sign "++")    ;; multiple character is OK
+           '(git-gutter:deleted-sign "--"))
+  (set-face-background 'git-gutter:modified "purple")
+  (set-face-foreground 'git-gutter:added "green")
+  (set-face-foreground 'git-gutter:deleted "red"))
+
 (provide 'core-utils)

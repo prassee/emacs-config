@@ -1,10 +1,11 @@
-;; mac specific
+;;; mac specific
 (cua-mode t)
 (show-paren-mode 1)
 (column-number-mode 1)
 (winner-mode 1)
 (electric-indent-mode 1)
 (global-auto-revert-mode 1)
+(global-git-gutter-mode 1)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -20,36 +21,22 @@
 (all-the-icons-ivy-rich-mode 1)
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
 
-;; (auto-dim-other-buffers-mode 1)
 (setq comint-process-echoes t)
 (setq pixel-scroll-precision-large-scroll-height 40.0)
 (setq pixel-scroll-precision-interpolation-factor 30)
- ;; scroll one line at a time (less "jumpy" than defaults)
-    
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-    
 (setq scroll-step 1) ;; keyboard scroll one line at a time
-
-
 (setq eshell-toggle-size-fraction 3)
 (setq eshell-toggle-use-projectile-root nil)
 (setq eshell-toggle-run-command nil)
 (setq eshell-toggle-init-function 'eshell-toggle-init-eshell)
-
 (setq file-name-handler-alist nil)
-
 (setq ivy-format-function 'ivy-format-function-line)
-
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
-
 (setq markdown-hr-display-char  nil)
-
 (setq sqlformat-command 'sqlfluff)
-
 (setq-default line-spacing 0)
 
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
@@ -61,8 +48,9 @@
 (add-hook 'java-mode-hook 'yas-minor-mode)
 (add-hook 'java-mode-hook 'lsp-java-lens-mode)
 
-;; (add-hook 'python-mode-hook 'code-cells-mode-maybe)
-;; (add-hook 'julia-mode-hook 'code-cells-mode-maybe)
+(add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'org-superstar-mode)
 
 (add-hook 'treemacs-mode-hook
           (defun change-hl-line-mode ()
@@ -88,33 +76,11 @@
                        treemacs-tags-face))
               (set-face-attribute face nil :family "ubuntu" :height 120))))
 
-;; (add-hook 'after-init-hook 'org-agenda-list)
-
-;; (with-eval-after-load 'lsp-mode
-;;   ;; (add-hook 'lsp-managed-mode-hook 'lsp-modeline-diagnostics-mode)
-;;   ;; (add-hook 'lsp-managed-mode-hook 'lsp-modeline-code-actions-mode)
-;;   ;; :project/:workspace/:file
-;;   (setq lsp-modeline-diagnostics-scope :workspace)
-;;   )
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
   (setq lsp-modeline-diagnostics-scope :workspace)
   (setq lsp-modeline-code-actions-segments '(count icon name)))
-
-;; (with-eval-after-load 'code-cells
-;;   (let ((map code-cells-mode-map))
-;;     (define-key map (kbd "M-p") 'code-cells-backward-cell)
-;;     (define-key map (kbd "M-n") 'code-cells-forward-cell)
-;;     (define-key map (kbd "C-c C-c") 'code-cells-eval)
-;; ))
-
-;; (with-eval-after-load 'flycheck
-;;   (flycheck-pos-tip-mode))
-
-;; (global-flycheck-mode 1)
-
-;; (set-face-attribute 'hl-line nil :background "#454545")
 
 
 (let ((alist
@@ -159,7 +125,7 @@
 
 (setq warning-minimum-level :emergency)
 
-;; 
+;;; Custom Faces 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -185,11 +151,6 @@
 
  '(markdown-pre-face
    ((t (:foreground "#bd98fe" :family "PragmataPro Liga" :height 1.0 )))))
-
-;; disable bold face across after loading everything
-
-(add-hook 'org-mode-hook 'visual-line-mode)
-(add-hook 'org-mode-hook 'variable-pitch-mode)
 
 
 (defun sh-send-line-or-region (&optional step)
@@ -226,6 +187,7 @@
 (when (and (executable-find "fish") (require 'fish-completion nil t))
   (global-fish-completion-mode))
 
+
 (load-theme 'leuven-dark t)
 
 (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
@@ -242,12 +204,14 @@
 (set-face-attribute 'mode-line-inactive nil
                     :background "#565063"
                     :foreground "grey"
-                    :box '(:line-width 5 :color "LightSlateGray" );; "#565063")
+                    :box '(:line-width 5 :color "LightSlateGray" )
                     :family "ubuntu"
                     :height 144
                     :overline nil
                     :underline nil)
 
+
+;;; Disable bold face across after loading everything
 (mapc
  (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil))
  (face-list))
