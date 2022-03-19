@@ -38,7 +38,7 @@
 (setq eshell-toggle-size-fraction 3)
 (setq eshell-toggle-use-projectile-root nil)
 (setq eshell-toggle-run-command nil)
-;; (setq eshell-toggle-init-function 'eshell-toggle-init-ansi-term)
+(setq eshell-toggle-init-function 'eshell-toggle-init-eshell)
 
 (setq file-name-handler-alist nil)
 

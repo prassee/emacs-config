@@ -277,8 +277,6 @@
   :config (setq ob-mermaid-cli-path "/data/cellar/mermaid-cli/node_modules/.bin/mmdc")
   )
 
-;; (use-package good-scroll :config (good-scroll-mode 1))
-
 (use-package mixed-pitch
   :hook (org-mode . mixed-pitch-mode)
   :config (set-face-attribute 'default nil :family "PragmataPro Liga" :height 196)

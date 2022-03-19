@@ -124,6 +124,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (load "org-config")
 
+(load "eshell-toggle")
+
 (load "elfmt")
 
 (load "custom")

@@ -7,8 +7,7 @@
 (use-package
   flycheck
   :custom (flycheck-emacs-lisp-load-path 'inherit)
-  (flycheck-set-indication-mode 'left-fringe)
-  )
+  (flycheck-set-indication-mode 'left-fringe))
 
 (use-package lsp-mode
   :defer t
@@ -268,6 +267,7 @@
                         :v-adjust 0.02
                         :face 'font-lock-variable-name-face))))))
 
+(use-package yasnippet)
 
 (use-package
   go-mode
@@ -287,7 +287,6 @@
              ("gopls.staticcheck" t t)))
   (setq indent-tabs-mode nil c-basic-offset 4 tab-width 4))
 
-(use-package yasnippet)
 
 (use-package python-black
   :demand t
