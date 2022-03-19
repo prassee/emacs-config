@@ -228,24 +228,23 @@
 
 (load-theme 'leuven-dark t)
 
-
-(set-face-attribute 'mood-line-buffer-name nil :foreground "green")
+(set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
 
 (set-face-attribute 'mode-line nil
                     :background "#353644"
-                    :foreground "green"
-                    :box '(:line-width 5 :color "green")
+                    :foreground "skyblue"
+                    :box '(:line-width 5 :color "deepskyblue")
                     :family "ubuntu"
-                    :height 153
+                    :height 144
                     :overline nil
                     :underline nil)
 
 (set-face-attribute 'mode-line-inactive nil
                     :background "#565063"
-                    :foreground "white"
-                    :box '(:line-width 5 :color "#565063")
+                    :foreground "grey"
+                    :box '(:line-width 5 :color "LightSlateGray" );; "#565063")
                     :family "ubuntu"
-                    :height 153
+                    :height 144
                     :overline nil
                     :underline nil)
 
