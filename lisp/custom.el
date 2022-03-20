@@ -74,7 +74,7 @@
                        treemacs-directory-collapsed-face
                        treemacs-file-face
                        treemacs-tags-face))
-              (set-face-attribute face nil :family "ubuntu" :height 120))))
+              (set-face-attribute face nil :family "ubuntu" :height 150))))
 
 
 (with-eval-after-load 'lsp-mode
@@ -188,27 +188,28 @@
   (global-fish-completion-mode))
 
 
-(load-theme 'leuven-dark t)
+;; (load-theme 'leuven-dark t)
 
-(set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
+(load-theme 'modus-vivendi t)
+;; (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
 
-(set-face-attribute 'mode-line nil
-                    :background "#353644"
-                    :foreground "skyblue"
-                    :box '(:line-width 5 :color "deepskyblue")
-                    :family "ubuntu"
-                    :height 144
-                    :overline nil
-                    :underline nil)
+;; (set-face-attribute 'mode-line nil
+;;                     :background "#353644"
+;;                     :foreground "skyblue"
+;;                     :box '(:line-width 5 :color "deepskyblue")
+;;                     :family "ubuntu"
+;;                     :height 144
+;;                     :overline nil
+;;                     :underline nil)
 
-(set-face-attribute 'mode-line-inactive nil
-                    :background "#565063"
-                    :foreground "grey"
-                    :box '(:line-width 5 :color "LightSlateGray" )
-                    :family "ubuntu"
-                    :height 144
-                    :overline nil
-                    :underline nil)
+;; (set-face-attribute 'mode-line-inactive nil
+;;                     :background "#565063"
+;;                     :foreground "grey"
+;;                     :box '(:line-width 5 :color "LightSlateGray" )
+;;                     :family "ubuntu"
+;;                     :height 144
+;;                     :overline nil
+;;                     :underline nil)
 
 
 ;;; Disable bold face across after loading everything

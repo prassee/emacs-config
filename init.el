@@ -141,3 +141,4 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (setq custom-file (concat user-emacs-directory "temp.el"))
 
 (load-file "~/.emacs.d/temp.el")
+(put 'upcase-region 'disabled nil)
