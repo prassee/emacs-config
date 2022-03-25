@@ -33,8 +33,7 @@
 
 (use-package
   lsp-ui
-  :custom 
-  (lsp-ui-doc-enable t)
+  :custom (lsp-ui-doc-enable t)
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-show-with-cursor t)
@@ -313,8 +312,12 @@
 (use-package typescript-mode :hook (typescript-mode . lsp))
 
 (use-package lsp-java
-  :config (setq lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
-                lsp-java-format-settings-profile "GoogleStyle"))
+  :config (setq
+           ;; lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+           ;; lsp-java-format-settings-profile "GoogleStyle"
+           lsp-java-format-settings-url "https://raw.githubusercontent.com/forge/core/master/eclipse-code-formatter-profile.xml"
+           lsp-java-format-settings-profile "Forge"
+           ))
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file

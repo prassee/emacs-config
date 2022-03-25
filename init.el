@@ -18,6 +18,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (setq read-process-output-max (* 1024 1024))
 ;; BetterGC
 
+
+
 ;; AutoGC
 (add-hook 'emacs-startup-hook
           (lambda ()
@@ -131,10 +133,12 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (load "custom")
 
 (set-face-attribute 'default nil
+                    ;; :family "Ubuntu Mono"
                     :family "PragmataPro Liga"
-                    :height 196
+                    :height 195
+                    :width  'normal
                     :weight 'normal
-                    :width  'normal)
+                    )
 
 (shell-command "truncate -s 0 ~/.emacs.d/temp.el")
 

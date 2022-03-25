@@ -20,6 +20,7 @@
 (lsp-treemacs-sync-mode 1)
 (all-the-icons-ivy-rich-mode 1)
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
+(counsel-projectile-mode 1)
 
 (setq comint-process-echoes t)
 (setq pixel-scroll-precision-large-scroll-height 40.0)
@@ -49,8 +50,10 @@
 (add-hook 'java-mode-hook 'lsp-java-lens-mode)
 
 (add-hook 'org-mode-hook 'visual-line-mode)
-(add-hook 'org-mode-hook 'variable-pitch-mode)
+;; (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'org-superstar-mode)
+(add-hook 'org-mode-hook 'emojify-mode)
+(add-hook 'org-capture-mode-hook 'emojify-mode)
 
 (add-hook 'treemacs-mode-hook
           (defun change-hl-line-mode ()
@@ -74,7 +77,7 @@
                        treemacs-directory-collapsed-face
                        treemacs-file-face
                        treemacs-tags-face))
-              (set-face-attribute face nil :family "ubuntu" :height 150))))
+              (set-face-attribute face nil :family "Ubuntu" :height 135))))
 
 
 (with-eval-after-load 'lsp-mode
@@ -187,30 +190,29 @@
 (when (and (executable-find "fish") (require 'fish-completion nil t))
   (global-fish-completion-mode))
 
+(load-theme 'leuven-dark t)
 
-;; (load-theme 'leuven-dark t)
+(set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
 
-(load-theme 'modus-vivendi t)
-;; (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
+(set-face-attribute 'mode-line nil
+                    :background "#353644"
+                    :foreground "skyblue"
+                    :box '(:line-width 6 :color "deepskyblue")
+                    :family "PragmataPro Liga"
+                    :width 'normal
+                    :height 180
+                    :overline nil
+                    :underline nil)
 
-;; (set-face-attribute 'mode-line nil
-;;                     :background "#353644"
-;;                     :foreground "skyblue"
-;;                     :box '(:line-width 5 :color "deepskyblue")
-;;                     :family "ubuntu"
-;;                     :height 144
-;;                     :overline nil
-;;                     :underline nil)
-
-;; (set-face-attribute 'mode-line-inactive nil
-;;                     :background "#565063"
-;;                     :foreground "grey"
-;;                     :box '(:line-width 5 :color "LightSlateGray" )
-;;                     :family "ubuntu"
-;;                     :height 144
-;;                     :overline nil
-;;                     :underline nil)
-
+(set-face-attribute 'mode-line-inactive nil
+                    :background "#565063"
+                    :foreground "grey"
+                    :box '(:line-width 6 :color "LightSlateGray" )
+                    :family "PragmataPro Liga"
+                    :width 'normal
+                    :height 180
+                    :overline nil
+                    :underline nil)
 
 ;;; Disable bold face across after loading everything
 (mapc
