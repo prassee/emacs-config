@@ -313,6 +313,8 @@
 
 (use-package lsp-java
   :config (setq
+           lsp-java-jdt-download-url
+           "https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz"
            ;; lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
            ;; lsp-java-format-settings-profile "GoogleStyle"
            lsp-java-format-settings-url "https://raw.githubusercontent.com/forge/core/master/eclipse-code-formatter-profile.xml"

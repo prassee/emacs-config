@@ -25,6 +25,7 @@
 (setq comint-process-echoes t)
 (setq pixel-scroll-precision-large-scroll-height 40.0)
 (setq pixel-scroll-precision-interpolation-factor 30)
+(setq pixel-scroll-precision-mode t)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
@@ -39,6 +40,7 @@
 (setq markdown-hr-display-char  nil)
 (setq sqlformat-command 'sqlfluff)
 (setq-default line-spacing 0)
+
 
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
 
@@ -190,7 +192,7 @@
 (when (and (executable-find "fish") (require 'fish-completion nil t))
   (global-fish-completion-mode))
 
-(load-theme 'leuven-dark t)
+(load-theme 'wombat t)
 
 (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
 
