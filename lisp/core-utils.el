@@ -1,3 +1,8 @@
+(use-package gcmh
+  :demand
+  :config
+  (gcmh-mode 1))
+
 (use-package
   exec-path-from-shell
   :ensure t
@@ -293,14 +298,20 @@
           (?- . ?–)))
   (org-superstar-mode -1))
 
-(use-package git-gutter
-  :custom (custom-set-variables
-           '(git-gutter:modified-sign "  ") ;; two space
-           '(git-gutter:added-sign "++")    ;; multiple character is OK
-           '(git-gutter:deleted-sign "--"))
-  (set-face-background 'git-gutter:modified "purple")
-  (set-face-foreground 'git-gutter:added "green")
-  (set-face-foreground 'git-gutter:deleted "red"))
+
+
+;; (use-package git-gutter
+;;   :custom (custom-set-variables
+;;            '(git-gutter:modified-sign "  ") ;; two space
+;;            '(git-gutter:added-sign "++")    ;; multiple character is OK
+;;            '(git-gutter:deleted-sign "--"))
+;;   (set-face-background 'git-gutter:modified "purple")
+;;   (set-face-foreground 'git-gutter:added "green")
+;;   (set-face-foreground 'git-gutter:deleted "red"))
+
+
+(use-package wrap-region)
 
 (use-package emojify)
+
 (provide 'core-utils)

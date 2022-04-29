@@ -5,7 +5,7 @@
 (winner-mode 1)
 (electric-indent-mode 1)
 (global-auto-revert-mode 1)
-(global-git-gutter-mode 1)
+;; (global-git-gutter-mode 1)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -16,12 +16,24 @@
 (tooltip-mode 1)
 (ivy-rich-mode 1)
 (mood-line-mode 1)
-(treemacs-hide-gitignored-files-mode 1)
-(lsp-treemacs-sync-mode 1)
 (all-the-icons-ivy-rich-mode 1)
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
 (counsel-projectile-mode 1)
+(treemacs-hide-gitignored-files-mode 1)
+(lsp-treemacs-sync-mode 1)
+(fringe-mode 1)
+(flycheck-mode 1)
 
+(wrap-region-global-mode 1)
+
+(wrap-region-add-wrapper "$" "$")
+(wrap-region-add-wrapper "{-" "-}" "#")
+(wrap-region-add-wrapper "/* " " */" "#"
+                         '(java-mode go-mode rust-mode javascript-mode css-mode))
+(wrap-region-add-wrapper "`" "`" nil '(markdown-mode ruby-mode))
+
+
+(setq gcmh-mode t)
 (setq comint-process-echoes t)
 (setq pixel-scroll-precision-large-scroll-height 40.0)
 (setq pixel-scroll-precision-interpolation-factor 30)
@@ -40,7 +52,6 @@
 (setq markdown-hr-display-char  nil)
 (setq sqlformat-command 'sqlfluff)
 (setq-default line-spacing 0)
-
 
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
 
@@ -130,14 +141,14 @@
 
 (setq warning-minimum-level :emergency)
 
-;;; Custom Faces 
+;;; Custom Faces
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-;; '(ivy-current-match ((t (:background "#181868" :foreground "white"))))
-;; '(ivy-highlight-face ((t (:background "#181868" :foreground "green"))))
+ ;; '(ivy-current-match ((t (:background "#181868" :foreground "white"))))
+ ;; '(ivy-highlight-face ((t (:background "#181868" :foreground "green"))))
  '(markdown-header-delimiter-face ((t (:foreground "mediumpurple"))))
  '(markdown-header-face-1
    ((t
@@ -192,7 +203,7 @@
 (when (and (executable-find "fish") (require 'fish-completion nil t))
   (global-fish-completion-mode))
 
-(load-theme 'wombat t)
+(load-theme 'modus-vivendi t)
 
 (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
 

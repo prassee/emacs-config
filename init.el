@@ -52,9 +52,9 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
               blink-cursor-mode t
               blink-cursor-interval 0.3
               cursor-type
-              '(bar . 4)
+              '(bar . 5)
               right-fringe-width 0
-              left-fringe-width  2
+              left-fringe-width  5
               frame-title-format "%f")
 
 
@@ -122,8 +122,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (load "lsp-config")
 
-(load "keybindings")
-
 (load "org-config")
 
 (load "eshell-toggle")
@@ -132,10 +130,11 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (load "custom")
 
+(load "keybindings")
+
 (set-face-attribute 'default nil
-                    ;; :family "Ubuntu Mono"
                     :family "PragmataPro Liga"
-                    :height 195
+                    :height 196
                     :width  'normal
                     :weight 'normal
                     )
@@ -145,4 +144,5 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (setq custom-file (concat user-emacs-directory "temp.el"))
 
 (load-file "~/.emacs.d/temp.el")
+
 (put 'upcase-region 'disabled nil)

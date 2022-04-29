@@ -7,7 +7,11 @@
 (use-package
   flycheck
   :custom (flycheck-emacs-lisp-load-path 'inherit)
-  (flycheck-set-indication-mode 'left-fringe))
+  :hook ((text-mode prog-mode)
+         . flycheck-mode)
+  :hook (flycheck-mode . flycheck-set-indication-mode)
+  :config (setq flycheck-indication-mode 'left-margin)
+  )
 
 (use-package lsp-mode
   :defer t
@@ -25,10 +29,11 @@
   (lsp-keep-workspace-alive nil) ; Auto-kill LSP server
   (lsp-report-if-no-buffer t)
   (lsp-eldoc-hook nil)
+  (flycheck-set-indication-mode 'left-margin)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
   :hook ((python-mode go-mode julia-mode rust-mode java-mode
                       js-mode js2-mode typescript-mode web-mode)
-         . lsp))
+         . lsp-deferred))
 
 
 (use-package
@@ -37,6 +42,7 @@
   (lsp-ui-doc-header t)
   (lsp-ui-doc-include-signature t)
   (lsp-ui-doc-show-with-cursor t)
+  (lsp-ui-doc-show-with-mouse t)
   (lsp-ui-doc-enhanced-markdown nil)
   (lsp-ui-doc-use-webkit t)
   (lsp-ui-doc-border "orange")
@@ -51,13 +57,14 @@
   (lsp-ui-flycheck-enable t)
   (lsp-ui-flycheck-list-position 'bottom)
   (lsp-ui-flycheck-live-reporting t)
+
   ;; lsp-ui-sideline
   (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-ignore-duplicate t)
   (lsp-ui-sideline-show-symbol nil)
   (lsp-ui-sideline-show-hover nil)
   (lsp-ui-sideline-show-diagnostics t)
-  (lsp-ui-sideline-show-code-actions t)
+  (lsp-ui-sideline-show-code-actions nil)
   (lsp-ui-sideline-code-actions-prefix "")
   ;; lsp-ui-imenu
   (lsp-ui-imenu-enable t)
@@ -315,15 +322,14 @@
   :config (setq
            lsp-java-jdt-download-url
            "https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz"
-           ;; lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
-           ;; lsp-java-format-settings-profile "GoogleStyle"
-           lsp-java-format-settings-url "https://raw.githubusercontent.com/forge/core/master/eclipse-code-formatter-profile.xml"
-           lsp-java-format-settings-profile "Forge"
+
+           lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+           lsp-java-format-settings-profile "GoogleStyle"
            ))
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
-  (setq lsp-diagnostics-modeline-scope :workspace)
+  (setq lsp-modeline-diagnostics-scope :workspace)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
 (use-package julia-mode)
