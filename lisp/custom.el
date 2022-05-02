@@ -141,34 +141,6 @@
 
 (setq warning-minimum-level :emergency)
 
-;;; Custom Faces
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- ;; '(ivy-current-match ((t (:background "#181868" :foreground "white"))))
- ;; '(ivy-highlight-face ((t (:background "#181868" :foreground "green"))))
- '(markdown-header-delimiter-face ((t (:foreground "mediumpurple"))))
- '(markdown-header-face-1
-   ((t
-     (:foreground "violet" :weight bold :height 1.0 :family "PragmataPro Liga"))))
- '(markdown-header-face-2
-   ((t
-     (:foreground "lightslateblue" :weight bold :height 1.0 :family "PragmataPro Liga"))))
- '(markdown-header-face-3
-   ((t
-     (:foreground "mediumpurple1" :weight bold :height 1.0 :family "PragmataPro Liga"))))
- '(markdown-link-face
-   ((t
-     (:background "#0e1014" :foreground "#bd93f9" :family "PragmataPro Liga" :height 1.0))))
- '(markdown-list-face
-   ((t (:foreground "mediumpurple" :family "PragmataPro Liga" :height 1.0))))
-
- '(markdown-pre-face
-   ((t (:foreground "#bd98fe" :family "PragmataPro Liga" :height 1.0 )))))
-
-
 (defun sh-send-line-or-region (&optional step)
   (interactive ())
   (let ((proc (get-process "shell"))
@@ -203,7 +175,11 @@
 (when (and (executable-find "fish") (require 'fish-completion nil t))
   (global-fish-completion-mode))
 
-(load-theme 'modus-vivendi t)
+;; (load-theme 'modus-vivendi t)
+
+;; (load-theme 'dracula t)
+
+(load-theme 'vscode-dark-plus t)
 
 (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
 
@@ -226,6 +202,45 @@
                     :height 180
                     :overline nil
                     :underline nil)
+
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ ;; '(ivy-current-match ((t (:background "#181868" :foreground "white"))))
+ ;; '(ivy-highlight-face ((t (:background "#181868" :foreground "green"))))
+ '(markdown-header-delimiter-face ((t (:foreground "mediumpurple"))))
+ '(markdown-header-face-1
+   ((t
+     (:foreground "violet" :weight bold :height 1.0 :family "PragmataPro Liga"))))
+ '(markdown-header-face-2
+   ((t
+     (:foreground "lightslateblue" :weight bold :height 1.0 :family "PragmataPro Liga"))))
+ '(markdown-header-face-3
+   ((t
+     (:foreground "mediumpurple1" :weight bold :height 1.0 :family "PragmataPro Liga"))))
+ '(markdown-link-face
+   ((t
+     (:background "#0e1014" :foreground "#bd93f9" :family "PragmataPro Liga" :height 1.0))))
+ '(markdown-list-face
+   ((t (:foreground "mediumpurple" :family "PragmataPro Liga" :height 1.0))))
+
+ '(markdown-pre-face
+   ((t (:foreground "#bd98fe" :family "PragmataPro Liga" :height 1.0 ))))
+
+ '(match
+   ((t
+     (:background "deep sky blue" :foreground "#282a36" :underline nil :weight normal))))
+
+ '(mc/cursor-bar-face
+   ((t (:background "yellow" :underline nil :weight bold :height 1))))
+ '(mc/cursor-face
+   ((t (:background "yellow" :inverse-video nil :underline nil :weight bold))))
+ 
+ )
 
 ;;; Disable bold face across after loading everything
 (mapc

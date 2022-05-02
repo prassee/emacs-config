@@ -51,8 +51,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
               word-wrap t
               blink-cursor-mode t
               blink-cursor-interval 0.3
-              cursor-type
-              '(bar . 5)
+              cursor-type '(bar . 6)
               right-fringe-width 0
               left-fringe-width  5
               frame-title-format "%f")

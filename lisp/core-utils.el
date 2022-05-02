@@ -1,7 +1,4 @@
-(use-package gcmh
-  :demand
-  :config
-  (gcmh-mode 1))
+(use-package gcmh :demand :config (gcmh-mode 1))
 
 (use-package
   exec-path-from-shell
@@ -67,7 +64,7 @@
 
 (use-package all-the-icons
   :if (display-graphic-p)
-  :config (setq all-the-icons-scale-factor 0.6))
+  :config (setq all-the-icons-scale-factor 1.0))
 
 (use-package all-the-icons-ivy-rich
   :after counsel-projectile
@@ -172,6 +169,10 @@
 
 (use-package transpose-frame)
 
+(use-package treemacs-all-the-icons
+  :config (setq all-the-icons-scale-factor 1.2)
+  )
+
 (use-package
   treemacs
   :ensure t
@@ -226,11 +227,12 @@
 
             ;; The default width and height of the icons is 22 pixels. If you are
             ;; using a Hi-DPI display, uncomment this to double the icon size.
-            (treemacs-resize-icons 12)
+            ;; (treemacs-load-theme "Default")
+            (treemacs-resize-icons 20)
             (treemacs-follow-mode t)
             (treemacs-indent-guide-mode t)
             (cfrs-border-width 2)
-            ;; (treemacs-filewatch-mode t)
+            (treemacs-filewatch-mode t)
             (treemacs-fringe-indicator-mode t)
             (treemacs-hide-gitignored-files-mode t)
             (pcase (cons
@@ -255,11 +257,10 @@
 
 (use-package blamer
   ;; :bind (("C-c g" . blamer-mode))
-  :custom-face (blamer-face
-                ((t :foreground "violet" ;; "#7a88cf"
-;;                    :family "Monego Ligatures" 
-                    :background nil
-                    :height 196)))
+  :custom-face (blamer-face ((t :foreground "violet" ;; "#7a88cf"
+                                ;;                    :family "Monego Ligatures"
+                                :background nil
+                                :height 196)))
   :config (setq blamer-idle-time 0.05)
   (setq blamer-author-formatter " %s ")
   (setq blamer-datetime-formatter "[%s]")
@@ -299,19 +300,14 @@
   (org-superstar-mode -1))
 
 
-
-;; (use-package git-gutter
-;;   :custom (custom-set-variables
-;;            '(git-gutter:modified-sign "  ") ;; two space
-;;            '(git-gutter:added-sign "++")    ;; multiple character is OK
-;;            '(git-gutter:deleted-sign "--"))
-;;   (set-face-background 'git-gutter:modified "purple")
-;;   (set-face-foreground 'git-gutter:added "green")
-;;   (set-face-foreground 'git-gutter:deleted "red"))
-
-
 (use-package wrap-region)
 
 (use-package emojify)
+
+(use-package vscode-dark-plus-theme
+  :ensure t
+  ;; :config
+  ;; (load-theme 'vscode-dark-plus t)
+  )
 
 (provide 'core-utils)
