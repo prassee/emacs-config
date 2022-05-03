@@ -2,7 +2,7 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)                      
+(setq default-buffer-file-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 ;; mac specific
 
@@ -51,7 +51,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
               word-wrap t
               blink-cursor-mode t
               blink-cursor-interval 0.3
-              cursor-type '(bar . 6)
+              cursor-type
+              '(bar . 6)
               right-fringe-width 0
               left-fringe-width  5
               frame-title-format "%f")
@@ -135,8 +136,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
                     :family "PragmataPro Liga"
                     :height 196
                     :width  'normal
-                    :weight 'normal
-                    )
+                    :weight 'normal)
 
 (shell-command "truncate -s 0 ~/.emacs.d/temp.el")
 

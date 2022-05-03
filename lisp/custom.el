@@ -175,11 +175,9 @@
 (when (and (executable-find "fish") (require 'fish-completion nil t))
   (global-fish-completion-mode))
 
-;; (load-theme 'modus-vivendi t)
+(load-theme 'modus-vivendi t)
 
-;; (load-theme 'dracula t)
-
-(load-theme 'vscode-dark-plus t)
+;; (load-theme 'vscode-dark-plus t)
 
 (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
 
