@@ -15,14 +15,9 @@
 (global-hl-line-mode 1)
 (tooltip-mode 1)
 (ivy-rich-mode 1)
-(mood-line-mode 1)
-(all-the-icons-ivy-rich-mode 1)
-(customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
-(counsel-projectile-mode 1)
-(treemacs-hide-gitignored-files-mode 1)
-(lsp-treemacs-sync-mode 1)
-(fringe-mode 1)
-(flycheck-mode 1)
+
+(pixel-scroll-mode 1)
+
 
 (wrap-region-global-mode 1)
 
@@ -52,6 +47,11 @@
 (setq markdown-hr-display-char  nil)
 (setq sqlformat-command 'sqlfluff)
 (setq-default line-spacing 0)
+
+(setq pixel-scroll-precision-large-scroll-height 40.0)
+
+(setq pixel-scroll-precision-interpolation-factor 30)
+
 
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
 
