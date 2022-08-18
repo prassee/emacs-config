@@ -31,7 +31,7 @@
   (lsp-eldoc-hook nil)
   (flycheck-set-indication-mode 'left-margin)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
-  :hook ((python-mode go-mode julia-mode rust-mode java-mode
+  :hook ((python-mode go-mode julia-mode rust-mode java-mode scala-mode
                       js-mode js2-mode typescript-mode web-mode)
          . lsp-deferred))
 
@@ -318,18 +318,28 @@
 
 (use-package typescript-mode :hook (typescript-mode . lsp))
 
-(use-package lsp-java
-  :config (setq
-           lsp-java-jdt-download-url
-           "https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz"
+(use-package lsp-metals
+  :ensure t
+  :custom
+  ;; Metals claims to support range formatting by default but it supports range
+  ;; formatting of multiline strings only. You might want to disable it so that
+  ;; emacs can use indentation provided by scala-mode.
+  (lsp-metals-server-args '("-J-Dmetals.allow-multiline-string-formatting=off"))
+  :hook (scala-mode . lsp))
 
-           lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
-           lsp-java-format-settings-profile "GoogleStyle"
-           ))
+;; (use-package lsp-java
+;;   :config (setq
+;;            lsp-java-jdt-download-url
+;;            "https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz"
+
+;;            lsp-java-format-settings-url "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+;;            lsp-java-format-settings-profile "GoogleStyle"
+;;            ))
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
   (setq lsp-modeline-diagnostics-scope :workspace)
+  (add-hook 'lsp-mode-hook 'yas-minor-mode)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
 (use-package julia-mode)
@@ -346,3 +356,4 @@
 (use-package lsp-docker)
 
 (provide 'lsp-config)
+

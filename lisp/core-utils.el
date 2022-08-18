@@ -9,7 +9,8 @@
   (exec-path-from-shell-copy-env "GOPATH")
   (exec-path-from-shell-copy-env "JULIA_BINDIR")
   (exec-path-from-shell-copy-env "WORKON_HOME")
-  (exec-path-from-shell-copy-env "PATH"))
+  (exec-path-from-shell-copy-env "PATH")
+  )
 
 (use-package
   highlight-symbol
@@ -285,9 +286,9 @@
 
 (use-package mixed-pitch
   :hook (org-mode . mixed-pitch-mode)
-  :config (set-face-attribute 'default nil :family "PragmataPro Liga"  :height 195)
-  (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga"  :height 195)
-  (set-face-attribute 'variable-pitch nil :family "PragmataPro Liga" :height 195))
+  :config (set-face-attribute 'default nil :family "PragmataPro Liga"  :height 162)
+  (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga"  :height 162)
+  (set-face-attribute 'variable-pitch nil :family "PragmataPro Liga" :height 162))
 
 (use-package org-superstar              ; supersedes `org-bullets'
   :ensure :after org

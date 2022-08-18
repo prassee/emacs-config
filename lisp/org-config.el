@@ -11,30 +11,35 @@
                                "•"))))))
 
 (setq org-capture-templates
-      '(("o" "Capture a Office Tasks" entry
+      '(
+        ("o" "Capture a Office Tasks" entry
          (file+headline "/data/org/office.org" "Office")
-         "* TODO %^{what's task in Office ?} DEADLINE: %^T  %^G \n %?\n %T\n  %i " :empty-lines 1)
+         "* TODO %^{what's task in Office ?} " :empty-lines 2)
 
-        ("v" "What todo on Vamana?" entry
-         (file+headline "/data/org/vamana.org" "Vamana")
-         "* TODO %^{what's task in Vamana ?} DEADLINE: %^T  %^G \n %?\n %T\n  %i " :empty-lines 1)
-
-        ("l" "What are you learn/explor'ing" entry
+        ("n" "New Project / Idea / Thought" entry
          (file+headline "/data/org/lrde.org" "LRDE")
-         "* TODO %^{what's to Learn / Research / Explore ?}  %^G \n %?\n %T\n %i " :empty-lines 1)
-
-        ("n" "Quick Notes" entry
-         (file "/data/org/notes.org")
-         "* TODO %^{Capture a note about ? }  %^G \n %?" :empty-lines 2)
+         "* TODO %^{Name of the Project / Idea / Thought :- }  %^G \n %?\n %T\n %i " :empty-lines 2)
 
         ("d" "Quick Document" entry
-         (file "/data/org/documentation.org")
+         (file+datetree "/data/org/documentation.org")
          "* TODO %^{Quickly 'Document' steps about ? } %?" :empty-lines 2)
+        
+        ("m" "Meeting Notes" entry
+         (file+datetree "/data/org/meetingNotes.org")
+         "* %?\n\n" :empty-lines 2)
 
-        ("j" "Journal Entry" entry
-         (file+datetree "/data/org/journal.org")
-         "* %?" :empty-lines 1)
+        ("s" "Shopping List" checkitem
+         (file "/data/org/shoppingList.org")
+         " [ ] %?\n\n" :prepend t :kill-buffer t)
 
+        ("b" "Books To Read" checkitem
+         (file "/data/org/booksToRead.org")
+         " [ ] %?\n\n " :prepend t :kill-buffer t)
+        
+        ("h" "Home Maintenance List" checkitem
+         (file "/data/org/homeTodoList.org")
+         " [ ] %?\n\n" :prepend t :kill-buffer t)
+        
         ("g" "Capture a ad-hoc thought" entry
          (file+headline "/data/org/general.org" "Notes")
          "* TODO %^{what going on ?} %^G  \n %?\n %T\n  %i " :empty-lines 1))
@@ -54,7 +59,7 @@
                           ":x:(c)" "|"
                           ":tada:(m)"))
       org-agenda-files
-      (list "/data/org/general.org" "/data/org/lrde.org" "/data/org/office.org" "/data/org/vamana.org" "/data/org/notes.org" "/data/org/documentation.org" "/data/org/notes.org" )
+      (list "/data/org/documentation.org" "/data/org/lrde.org"  "/data/org/office.org"  "/data/org/meetingNotes.org" )
       ;;     org-priority-faces ';; ((65 :foreground "red" :background "yellow" :weight 'bold )
       ;;  (66 :foreground "black" :background "orange" :weight 'bold)
       ;;  (67 :foreground "black" :background "green" :weight 'bold)

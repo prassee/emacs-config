@@ -15,9 +15,7 @@
 (global-hl-line-mode 1)
 (tooltip-mode 1)
 (ivy-rich-mode 1)
-
-(pixel-scroll-mode 1)
-
+(mood-line-mode 1)
 
 (wrap-region-global-mode 1)
 
@@ -30,13 +28,19 @@
 
 (setq gcmh-mode t)
 (setq comint-process-echoes t)
-(setq pixel-scroll-precision-large-scroll-height 40.0)
-(setq pixel-scroll-precision-interpolation-factor 30)
-(setq pixel-scroll-precision-mode t)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
+
+;; (pixel-scroll-mode 1)
+;; (setq pixel-scroll-precision-large-scroll-height 20.0)
+;; (setq pixel-scroll-precision-interpolation-factor 30)
+;; (setq pixel-scroll-precision-mode t)
+;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+;; (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+;; (setq scroll-step 1) ;; keyboard scroll one line at a time
+;; (setq scroll-conservatively 10000)
+;; (setq auto-window-vscroll nil)
+
+
 (setq eshell-toggle-size-fraction 3)
 (setq eshell-toggle-use-projectile-root nil)
 (setq eshell-toggle-run-command nil)
@@ -47,10 +51,6 @@
 (setq markdown-hr-display-char  nil)
 (setq sqlformat-command 'sqlfluff)
 (setq-default line-spacing 0)
-
-(setq pixel-scroll-precision-large-scroll-height 40.0)
-
-(setq pixel-scroll-precision-interpolation-factor 30)
 
 
 (defun disable-linum-setup-hook () (setq display-line-numbers-mode -1))
@@ -175,33 +175,33 @@
 (when (and (executable-find "fish") (require 'fish-completion nil t))
   (global-fish-completion-mode))
 
-;; (load-theme 'modus-vivendi t)
+(load-theme 'modus-vivendi t)
 
 ;; (load-theme 'dracula t)
 
-(load-theme 'vscode-dark-plus t)
+;; (load-theme 'vscode-dark-plus t)
 
-(set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue")
+;; (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue") 
 
-(set-face-attribute 'mode-line nil
-                    :background "#353644"
-                    :foreground "skyblue"
-                    :box '(:line-width 6 :color "deepskyblue")
-                    :family "PragmataPro Liga"
-                    :width 'normal
-                    :height 180
-                    :overline nil
-                    :underline nil)
+;; (set-face-attribute 'mode-line nil
+;;                     :background "#353644"
+;;                     :foreground "skyblue"
+;;                     :box '(:line-width 6 :color "deepskyblue")
+;;                     :family "PragmataPro Liga"
+;;                     :width 'normal
+;;                     :height 162
+;;                     :overline nil
+;;                     :underline nil)
 
-(set-face-attribute 'mode-line-inactive nil
-                    :background "#565063"
-                    :foreground "grey"
-                    :box '(:line-width 6 :color "LightSlateGray" )
-                    :family "PragmataPro Liga"
-                    :width 'normal
-                    :height 180
-                    :overline nil
-                    :underline nil)
+;; (set-face-attribute 'mode-line-inactive nil
+;;                     :background "#565063"
+;;                     :foreground "grey"
+;;                     :box '(:line-width 6 :color "LightSlateGray" )
+;;                     :family "PragmataPro Liga"
+;;                     :width 'normal
+;;                     :height 162
+;;                     :overline nil
+;;                     :underline nil)
 
 
 

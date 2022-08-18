@@ -133,7 +133,7 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 
 (set-face-attribute 'default nil
                     :family "PragmataPro Liga"
-                    :height 196
+                    :height 162
                     :width  'normal
                     :weight 'normal
                     )
