@@ -68,29 +68,29 @@
 (add-hook 'org-mode-hook 'emojify-mode)
 (add-hook 'org-capture-mode-hook 'emojify-mode)
 
-(add-hook 'treemacs-mode-hook
-          (defun change-hl-line-mode ()
-            (setq-local hl-line-face 'custom-line-highlight)
-            (overlay-put hl-line-overlay 'face hl-line-face)
-            (treemacs--setup-icon-background-colors)))
+;; (add-hook 'treemacs-mode-hook
+;;           (defun change-hl-line-mode ()
+;;             (setq-local hl-line-face 'custom-line-highlight)
+;;             (overlay-put hl-line-overlay 'face hl-line-face)
+;;             (treemacs--setup-icon-background-colors)))
 
-(add-hook 'treemacs-mode-hook
-          (lambda()
-            (display-line-numbers-mode -1)
-            (dolist (face
-                     '(treemacs-root-face
-                       treemacs-git-unmodified-face
-                       treemacs-git-modified-face
-                       treemacs-git-renamed-face
-                       treemacs-git-ignored-face
-                       treemacs-git-untracked-face
-                       treemacs-git-added-face
-                       treemacs-git-conflict-face
-                       treemacs-directory-face
-                       treemacs-directory-collapsed-face
-                       treemacs-file-face
-                       treemacs-tags-face))
-              (set-face-attribute face nil :family "Ubuntu" :height 135))))
+;; (add-hook 'treemacs-mode-hook
+;;           (lambda()
+;;             (display-line-numbers-mode -1)
+;;             (dolist (face
+;;                      '(treemacs-root-face
+;;                        treemacs-git-unmodified-face
+;;                        treemacs-git-modified-face
+;;                        treemacs-git-renamed-face
+;;                        treemacs-git-ignored-face
+;;                        treemacs-git-untracked-face
+;;                        treemacs-git-added-face
+;;                        treemacs-git-conflict-face
+;;                        treemacs-directory-face
+;;                        treemacs-directory-collapsed-face
+;;                        treemacs-file-face
+;;                        treemacs-tags-face))
+;;               (set-face-attribute face nil :family "Ubuntu" :height 135))))
 
 
 (with-eval-after-load 'lsp-mode
@@ -177,31 +177,27 @@
 
 (load-theme 'modus-vivendi t)
 
-;; (load-theme 'dracula t)
+(set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue") 
 
-;; (load-theme 'vscode-dark-plus t)
+(set-face-attribute 'mode-line nil
+                    :background "#353644"
+                    :foreground "skyblue"
+                    :box '(:line-width 6 :color "deepskyblue")
+                    :family "PragmataPro Liga"
+                    :width 'normal
+                    :height 162
+                    :overline nil
+                    :underline nil)
 
-;; (set-face-attribute 'mood-line-buffer-name nil :foreground "skyblue") 
-
-;; (set-face-attribute 'mode-line nil
-;;                     :background "#353644"
-;;                     :foreground "skyblue"
-;;                     :box '(:line-width 6 :color "deepskyblue")
-;;                     :family "PragmataPro Liga"
-;;                     :width 'normal
-;;                     :height 162
-;;                     :overline nil
-;;                     :underline nil)
-
-;; (set-face-attribute 'mode-line-inactive nil
-;;                     :background "#565063"
-;;                     :foreground "grey"
-;;                     :box '(:line-width 6 :color "LightSlateGray" )
-;;                     :family "PragmataPro Liga"
-;;                     :width 'normal
-;;                     :height 162
-;;                     :overline nil
-;;                     :underline nil)
+(set-face-attribute 'mode-line-inactive nil
+                    :background "#565063"
+                    :foreground "grey"
+                    :box '(:line-width 6 :color "LightSlateGray" )
+                    :family "PragmataPro Liga"
+                    :width 'normal
+                    :height 162
+                    :overline nil
+                    :underline nil)
 
 
 

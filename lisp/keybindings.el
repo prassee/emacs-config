@@ -1,9 +1,15 @@
 (fset `yes-or-no-p `y-or-n-p)
 
 (global-set-key (kbd "<f5>") 'revert-buffer)
-(global-set-key (kbd "<f8>") 'treemacs)
-(global-set-key (kbd "<f9>") 'treemacs-switch-workspace)
+;; (global-set-key (kbd "<f8>") 'treemacs)
+;; (global-set-key (kbd "<f9>") 'treemacs-switch-workspace)
+
+(global-set-key (kbd "s-l fe") 'lsp-treemacs-errors-list)
+(global-set-key (kbd "C-c l") 'lsp-format-buffer)
+
 (global-set-key (kbd "<f12>") 'eshell-toggle)
+(global-set-key (kbd "<f9>") 'projectile-switch-project)
+(global-set-key (kbd "<f8>") 'projectile-add-known-project)
 
 (global-set-key "\C-x2" 'split-window-vertically)
 (global-set-key "\C-x3" 'split-window-horizontally)
@@ -20,8 +26,6 @@
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "C-x C-s")  'swiper)
 
-(global-set-key (kbd "C-c l") 'lsp-format-buffer)
-(global-set-key (kbd "s-l fe") 'lsp-treemacs-errors-list)
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x a") 'org-capture)

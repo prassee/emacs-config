@@ -31,8 +31,7 @@
   (lsp-eldoc-hook nil)
   (flycheck-set-indication-mode 'left-margin)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
-  :hook ((python-mode go-mode julia-mode rust-mode java-mode scala-mode
-                      js-mode js2-mode typescript-mode web-mode)
+  :hook ((python-mode go-mode julia-mode rust-mode java-mode scala-mode)
          . lsp-deferred))
 
 
@@ -316,7 +315,33 @@
 
 (use-package toml-mode)
 
-(use-package typescript-mode :hook (typescript-mode . lsp))
+;; (use-package typescript-mode :hook (typescript-mode . lsp))
+
+;;; set of hacks to enable scala3 support
+;; (defun is-scala3-project ()
+;;   "Check if the current project is using scala3.Loads the build.sbt file for the project and serach for the scalaVersion."
+;;   (projectile-with-default-dir (projectile-project-root) ;; -root
+;;     (when (file-exists-p "build.sbt")
+;;       (with-temp-buffer
+;;         (insert-file-contents "build.sbt")
+;;         (search-forward "scalaVersion := \"3" nil t)))))
+
+;; (defun with-disable-for-scala3 (orig-scala-mode-map:add-self-insert-hooks &rest arguments)
+;;     "When using scala3 skip adding indention hooks."
+;;     (unless (is-scala3-project)
+;;       (apply orig-scala-mode-map:add-self-insert-hooks arguments)))
+
+;; (advice-add #'scala-mode-map:add-self-insert-hooks :around #'with-disable-for-scala3)
+
+;; (defun disable-scala-indent ()
+;;   "In scala 3 indent line does not work as expected due to whitespace grammar."
+;;   (when (is-scala3-project)
+;;     (setq indent-line-function 'indent-relative-maybe)))
+
+
+;; (add-hook 'scala-mode-hook #'disable-scala-indent)
+
+;;; set of hacks to enable scala3 support
 
 (use-package lsp-metals
   :ensure t
@@ -338,7 +363,10 @@
 
 (with-eval-after-load 'lsp-mode
   ;; :project/:workspace/:file
-  (setq lsp-modeline-diagnostics-scope :workspace)
+  (setq
+   lsp-modeline-diagnostics-scope :workspace
+   )
+  
   (add-hook 'lsp-mode-hook 'yas-minor-mode)
   (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
 
