@@ -10,7 +10,7 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (global-unset-key (kbd "C-z"))
-(global-linum-mode 0)
+;; (global-linum-mode 0)
 (global-display-line-numbers-mode 1)
 (global-hl-line-mode 1)
 (tooltip-mode 1)
@@ -23,6 +23,11 @@
 (lsp-treemacs-sync-mode 1)
 (fringe-mode 1)
 (flycheck-mode 1)
+
+;; For current frame
+(set-frame-parameter nil 'alpha-background 90)
+;; For all new frames henceforth
+(add-to-list 'default-frame-alist '(alpha-background . 90))
 
 (wrap-region-global-mode 1)
 
@@ -185,7 +190,7 @@
                     :background "#353644"
                     :foreground "skyblue"
                     :box '(:line-width 6 :color "deepskyblue")
-                    :family "PragmataPro Liga"
+                    :family "PragmataPro Mono"
                     :width 'normal
                     :height 180
                     :overline nil
@@ -195,7 +200,7 @@
                     :background "#565063"
                     :foreground "grey"
                     :box '(:line-width 6 :color "LightSlateGray" )
-                    :family "PragmataPro Liga"
+                    :family "PragmataPro Mono"
                     :width 'normal
                     :height 180
                     :overline nil
@@ -246,5 +251,6 @@
  (face-list))
 
 (set-face-bold-p 'bold nil)
+(setq ob-mermaid-cli-path "/usr/local/bin/mmdc")
 
 (provide 'custom)

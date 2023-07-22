@@ -32,7 +32,7 @@
   (flycheck-set-indication-mode 'left-margin)
   ;;  :bind (:map lsp-mode-map ("C-c C-f" . lsp-format-buffer))
   :hook ((python-mode go-mode julia-mode rust-mode java-mode
-                      js-mode js2-mode typescript-mode web-mode)
+                      js-mode js2-mode typescript-mode web-mode scala-mode sbt-mode)
          . lsp-deferred))
 
 
@@ -44,7 +44,7 @@
   (lsp-ui-doc-show-with-cursor t)
   (lsp-ui-doc-show-with-mouse t)
   (lsp-ui-doc-enhanced-markdown nil)
-  (lsp-ui-doc-use-webkit t)
+  (lsp-ui-doc-use-webkit nil)
   (lsp-ui-doc-border "orange")
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-ui-doc-include-signature t)
@@ -334,15 +334,82 @@
 
 (use-package julia-mode)
 
+;; (use-package vterm
+;;   :config
+;;   (setq vterm-always-compile-module t)
+;;   )
+
 (use-package lsp-julia
-  :config (setq lsp-julia-default-environment "~/.julia/environments/v1.7")
+  :config (setq lsp-julia-default-environment "~/.julia/environments/v1.9")
   (add-hook 'julia-mode-hook #'lsp)
   (add-hook 'julia-mode-hook 'julia-repl-mode))
 
-(use-package julia-repl :after lsp-julia)
+(use-package julia-repl
+  :ensure t
+  :hook (julia-mode . julia-repl-mode)
+  :after lsp-julia
+  :init
+  (setenv "JULIA_NUM_THREADS" "8")
+
+  :config
+  ;; Set the terminal backend
+  (julia-repl-set-terminal-backend 'vterm)
+  
+  ;; Keybindings for quickly sending code to the REPL
+  (define-key julia-repl-mode-map (kbd "<C-S-RET>") 'my/julia-repl-send-cell)
+  (define-key julia-repl-mode-map (kbd "<M-RET>") 'julia-repl-send-line)
+  (define-key julia-repl-mode-map (kbd "<S-return>") 'julia-repl-send-buffer))
+
+(defun my/julia-repl-send-cell() 
+  ;; "Send the current julia cell (delimited by ###) to the julia shell"
+  (interactive)
+  (save-excursion (setq cell-begin (if (re-search-backward "^###" nil t) (point) (point-min))))
+  (save-excursion (setq cell-end (if (re-search-forward "^###" nil t) (point) (point-max))))
+  (set-mark cell-begin)
+  (goto-char cell-end)
+  (julia-repl-send-region-or-line)
+  (next-line))
+
 
 (use-package dockerfile-mode)
 
 (use-package lsp-docker)
+
+;; Enable scala-mode for highlighting, indentation and motion commands
+(use-package scala-mode
+  :interpreter ("scala" . scala-mode)
+  :hook (lsp-mode . yas-minor-mode)
+  )
+
+;; Enable sbt mode for executing sbt commands
+(use-package sbt-mode
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map)
+   ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+  (setq sbt:program-options '("-Dsbt.supershell=false"))
+  :hook (lsp-mode . yas-minor-mode)
+  )
+
+;; Add metals backend for lsp-mode
+(use-package lsp-metals)
+
+(defun lsp-find-workspace (server-id &optional file-name)
+    "Find workspace for SERVER-ID for FILE-NAME."
+    (-when-let* ((session (lsp-session))
+                 (folder->servers (lsp-session-folder->servers session))
+                 (workspaces (if file-name
+                                 (let* ((folder (lsp-find-session-folder session file-name))
+                                        (folder-last-char (substring folder (- (length folder) 1) (length folder)))
+                                        (key (if (string= folder-last-char "/") (substring folder 0 (- (length folder) 1)) folder)))
+                                   (gethash key folder->servers))
+                               (lsp--session-workspaces session))))
+
+      (--first (eq (lsp--client-server-id (lsp--workspace-client it)) server-id) workspaces)))
 
 (provide 'lsp-config)

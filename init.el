@@ -18,8 +18,6 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (setq read-process-output-max (* 1024 1024))
 ;; BetterGC
 
-
-
 ;; AutoGC
 (add-hook 'emacs-startup-hook
           (lambda ()
@@ -133,8 +131,8 @@ If you experience freezing, decrease this.  If you experience stuttering, increa
 (load "keybindings")
 
 (set-face-attribute 'default nil
-                    :family "PragmataPro Liga"
-                    :height 196
+                    :family "PragmataPro Mono Liga"
+                    :height 180
                     :width  'normal
                     :weight 'normal)
 

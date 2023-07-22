@@ -275,12 +275,12 @@
 (use-package mermaid-mode
   :ensure t
   :init (setq
-         mermaid-mmdc-location "/data/cellar/mermaid-cli/node_modules/.bin/mmdc"
+         mermaid-mmdc-location "/usr/local/bin/mmdc"
          mermaid-tmp-dir "/media/saipranav/6664-6532/mermaidDiagrams/")
   :mode "\\.mermaid\\'")
 
 (use-package ob-mermaid
-  :config (setq ob-mermaid-cli-path "/data/cellar/mermaid-cli/node_modules/.bin/mmdc")
+  :config (setq ob-mermaid-cli-path "/usr/local/bin/mmdc")
   )
 
 (use-package mixed-pitch
@@ -289,25 +289,25 @@
   (set-face-attribute 'fixed-pitch nil :family "PragmataPro Liga"  :height 195)
   (set-face-attribute 'variable-pitch nil :family "PragmataPro Liga" :height 195))
 
-(use-package org-superstar              ; supersedes `org-bullets'
+(use-package org-superstar
   :ensure :after org
   :config (setq org-superstar-remove-leading-stars t)
-  (setq org-superstar-headline-bullets-list '(" ")) ;; '("🞛" "◉" "○" "▷")
+  (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿")
   (setq org-superstar-item-bullet-alist
         '((?+ . ?•)
           (?* . ?➤)
           (?- . ?–)))
-  (org-superstar-mode -1))
+  (org-superstar-mode 1)))
 
+(use-package org-fancy-priorities
+  :ensure t
+  :hook
+  (org-mode . org-fancy-priorities-mode)
+  :config
+  (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
 
 (use-package wrap-region)
 
 (use-package emojify)
-
-(use-package vscode-dark-plus-theme
-  :ensure t
-  ;; :config
-  ;; (load-theme 'vscode-dark-plus t)
-  )
 
 (provide 'core-utils)

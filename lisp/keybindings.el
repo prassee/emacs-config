@@ -47,6 +47,14 @@
 (global-set-key (kbd "C-S-l") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
+;; (global-set-key (kbd "C-S-RET") 'my/julia-repl-send-cell)
+;; (global-set-key (kbd "M-RET") 'julia-repl-send-cell)
+;; (global-set-key (kbd "<S-return>") 'julia-repl-send-buffer)
+
+(define-key julia-mode-map (kbd "C-S-RET") 'julia-repl-send-cell)
+(define-key julia-mode-map (kbd "M-RET") 'my/julia-repl-send-cell)
+(define-key julia-mode-map (kbd "<S-return>") 'julia-repl-send-buffer)
+
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "<C-mouse-4>"))
 (global-unset-key (kbd "<C-mouse-5>"))
